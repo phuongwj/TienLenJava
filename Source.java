@@ -44,14 +44,28 @@ public class Source {
             playerFour.add(deckShuffled.get(i));
         }
 
-        // Printing the players' cards.
+        // Printing the players' cards (unsorted).
+        System.out.println("UNSORTED");
+        printCards(playerOne);
+        printCards(playerTwo);
+        printCards(playerThree);
+        printCards(playerFour);
+
+        //Sort cards low to high.
+        sortCards(playerOne, deck);
+        sortCards(playerTwo, deck);
+        sortCards(playerThree, deck);
+        sortCards(playerFour, deck);
+
+        // Printing the players' cards (sorted).
+        System.out.println("SORTED");
         printCards(playerOne);
         printCards(playerTwo);
         printCards(playerThree);
         printCards(playerFour);
     }
 
-    // Shuffle cards method.
+    // Method: Shuffle cards.
     public static ArrayList<String> shuffleCards(String[] deck) {
 
         // ArrayList deck of cards initialization.
@@ -71,7 +85,7 @@ public class Source {
         return deckShuffled;
     }
 
-    // Printing cards method.
+    // Method: Printing cards.
     public static void printCards(ArrayList<String> player) {
         for (int i = 0; i < 13; i++) {
             System.out.println(player.get(i));
@@ -79,25 +93,58 @@ public class Source {
         System.out.println("-------------");
     }
 
-    // Sorting the cards low to high method.
-    public static void reOrderCards(ArrayList<String> player) {
-        
-    }
+    // Method: Sorting the cards low to high using Insertion Sort.
+    public static void sortCards(ArrayList<String> player, String[] deck) {
 
-    // sort the cards from low to high within the player's deck.
-    // - have a ranking system so as to sort the card accodingly.
-    // => go through every single element of each individual hand. since its a string
-    // so you have to use charAt() the first one for that string. and since you have 
-    // the ordering of the numbers and suits in ascending order then the higher the 
-    // index, the larger the value of the that particular number/suit. for example:
-    // 5 is larger than 3, but 3 is also in a bigger index (aka 2 > 0). so we will 
-    // check the index of each one to see which one is bigger. we will use a sorting
-    // algorithm here. 
+        // Loop through the player's deck.
+        for (int i = 1; i < player.size(); i++) {
+
+            // Created two temporary variables that hold the real card value from the 52 card deck of the player's deck.
+            int tempIndexFirst = 0;
+            int tempIndexTwo = 0;
+
+            // Have a temporary string to get the index 1 of player's card. (Aka, current index going through from i).
+            String tempOne = player.get(i);
+
+            // Previous index of the current index.
+            int tempTwo = i-1;
+
+            // Getting the real values of the player's cards from the 52-card deck.
+            for (int j = 0; j < deck.length; j++) {
+                if (player.get(i).equals(deck[j])) {
+                    tempIndexFirst = j;
+                    break;
+                }
+            }
+            for (int k = 0; k < deck.length; k++) {
+                if (player.get(tempTwo).equals(deck[k])) {
+                    tempIndexTwo = k;
+                    break;
+                }
+            }
+
+            // Compares the indexes from the player's deck by using the real values received from the 52 deck to see which one comes first.
+            while (tempTwo >= 0 && tempIndexTwo > tempIndexFirst) {
+                player.set(tempTwo + 1, player.get(tempTwo));
+                tempTwo--; 
+
+                // Reset tempIndexTwo so that after 1 or more loops, when the previous cards are still larger than the "i" card. So we can keep
+                // comparing. But only compare when tempTwo isn't negative. (Aka, out of bounds).
+                if (!(tempTwo < 0)) {
+                    for (int l = 0; l < deck.length; l++) {
+                        if (player.get(tempTwo).equals(deck[l])) {
+                            tempIndexTwo = l;
+                            break;
+                        }
+                    }
+                }
+            }
+            player.set(tempTwo + 1, tempOne);
+        }
+    }
 
     // have players play the card they want => show the card that has been dealt.
     // => update the card deck and have that card be dealt once they play it.
-    // only show the deck of cards thats associated to that player's turn.
     // first game ever, identify which deck has 3 of spades.
-
 
 }

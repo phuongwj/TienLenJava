@@ -163,4 +163,9 @@ public class Source {
     // 4. show the card that has been dealt
     // 5. update the player's card deck
     // 6. move the turn to the next player and keep going for the cycle.
+
+    // extra brainstorm done: when you check the card that is on the table and the card that the player wanna deal, you would only 
+    // need two Strings, an array is unnecessary cause you're comparing those two Strings. the card of the player can only be dealt 
+    // if is bigger than the other one.
+    // you can either use your turn to play the card or pass it to the next person.
 }

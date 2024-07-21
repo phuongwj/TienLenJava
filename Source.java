@@ -30,6 +30,9 @@ public class Source {
         ArrayList<String> playerThree = new ArrayList<>();
         ArrayList<String> playerFour = new ArrayList<>();
 
+        // Cards on the table initialization.
+        ArrayList<String> cardsPlayed = new ArrayList<>();
+
         // Distributing the deck of cards into 4 hands (different all 4).
         for (int i = 0; i < 13; i++) {
             playerOne.add(deckShuffled.get(i));
@@ -54,8 +57,38 @@ public class Source {
         sortCards(playerFour, deck);
 
         // Printing the players' cards (sorted).
-        System.out.println("SORTED");
+        System.out.println("Here are each individual player's deck of cards:");
         printCards(playerOne, playerTwo, playerThree, playerFour);
+
+        // Printing the card that has just been played (i.e 3 of Spades).
+        System.out.println("Cards on the table");
+        findThreeOfSpades(playerOne, playerTwo, playerThree, playerFour, cardsPlayed, deck);
+        System.out.println(cardsPlayed);
+        System.out.println("-------------");
+
+        System.out.println("Player's deck of cards update:");
+        printCards(playerOne, playerTwo, playerThree, playerFour);
+
+    }
+
+    // Method: Printing cards.
+    public static void printCards(ArrayList<String> playerOne, ArrayList<String> playerTwo, ArrayList<String> playerThree, ArrayList<String> playerFour) {
+        for (int i = 0; i < playerOne.size(); i++) {
+            System.out.println(playerOne.get(i));
+        }
+        System.out.println("-------------");
+        for (int i = 0; i < playerTwo.size(); i++) {
+            System.out.println(playerTwo.get(i));
+        }
+        System.out.println("-------------");
+        for (int i = 0; i < playerThree.size(); i++) {
+            System.out.println(playerThree.get(i));
+        }
+        System.out.println("-------------");
+        for (int i = 0; i < playerFour.size(); i++) {
+            System.out.println(playerFour.get(i));
+        }
+        System.out.println("-------------");
     }
 
     // Method: Shuffle cards.
@@ -76,26 +109,6 @@ public class Source {
             deckShuffled.set(n, temp);
         }
         return deckShuffled;
-    }
-
-    // Method: Printing cards.
-    public static void printCards(ArrayList<String> playerOne, ArrayList<String> playerTwo, ArrayList<String> playerThree, ArrayList<String> playerFour ) {
-        for (int i = 0; i < 13; i++) {
-            System.out.println(playerOne.get(i));
-        }
-        System.out.println("-------------");
-        for (int i = 0; i < 13; i++) {
-            System.out.println(playerTwo.get(i));
-        }
-        System.out.println("-------------");
-        for (int i = 0; i < 13; i++) {
-            System.out.println(playerThree.get(i));
-        }
-        System.out.println("-------------");
-        for (int i = 0; i < 13; i++) {
-            System.out.println(playerFour.get(i));
-        }
-        System.out.println("-------------");
     }
 
     // Method: Sorting the cards low to high using Insertion Sort.
@@ -148,8 +161,29 @@ public class Source {
         }
     }
 
+    // Method: Find 3 of Spades.
+    public static void findThreeOfSpades(ArrayList<String> playerOne, ArrayList<String> playerTwo, ArrayList<String> playerThree, ArrayList<String> playerFour, ArrayList<String> cardsPlayed, String[] deck) {
 
-    // in the print statements, remember to from i < 13 to i < player.length cause the player's deck will be updated often.
+        // Going through all of the player's deck to find 3 of Spades, add that to the cardsPlayed then remove it from the player. 
+        // Also updates the player's card deck if found 3 of Spades.
+        if (playerOne.get(0).equals(deck[0])) {
+            cardsPlayed.add("3 of Spades");
+            playerOne.remove(0);
+        } else if (playerTwo.get(0).equals(deck[0])) {
+            cardsPlayed.add("3 of Spades");
+            playerTwo.remove(0);
+        } else if (playerThree.get(0).equals(deck[0])) {
+            cardsPlayed.add("3 of Spades");
+            playerThree.remove(0);
+        } else if (playerFour.get(0).equals(deck[0])) {
+            cardsPlayed.add("3 of Spades");
+            playerFour.remove(0);
+        }
+    }
+
+
+
+    // in the print statements, remember to from i < 13 to i < player.length cause the player's deck will be updated often. => done
 
     // 1. find 3 of spades method:
     // - go through all of the player's deck, 
@@ -158,6 +192,7 @@ public class Source {
     // - deleted card will be printed.
     // - print the cards from the players again.
 
+    // SWITCH EVERYTHING TO OBJECTS NOW.
     // 2. move the turn to the next player
     // 3. player dealts card if the card they wanna deal is larger than the card before it.
     // 4. show the card that has been dealt

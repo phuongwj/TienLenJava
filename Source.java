@@ -1,10 +1,10 @@
 import java.util.ArrayList;
-import java.util.Scanner;
+// import java.util.Scanner;
 
 public class Source {
     public static void main(String[] args) {
 
-        Scanner in = new Scanner(System.in);
+        // Scanner in = new Scanner(System.in);
 
         // Deck of cards initialization. 
         String[] deck = {"3 of Spades", "3 of Clubs", "3 of Diamonds", "3 of Hearts",
@@ -203,4 +203,19 @@ public class Source {
     // need two Strings, an array is unnecessary cause you're comparing those two Strings. the card of the player can only be dealt 
     // if is bigger than the other one.
     // you can either use your turn to play the card or pass it to the next person.
+    // only show the last two cards in the cardsPlayed arraylist.
+    // find a way to store a whole sort of array? inside arraylist. cause what if a player plays a whole sequence? therefore we cant
+    // use just two strings, cause what if its a whole sequence?
+
+    // ideas for switching this to OOP:
+    // - deck class
+    //  + initialize the deck in there, have getters so you can have access to the indexes
+    //  + shuffle cards method
+    //  + sort cards method
+
+    // - create a class for players. then inside the Source.java, make 4 instances from that class.
+    //  + Player player1 = new Player() etc,.
+    //  + have attributes for that player class. 
+
+    // what can that player class has so that we can create player instances?
 }

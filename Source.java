@@ -6,6 +6,31 @@ public class Source {
 
         // Scanner in = new Scanner(System.in);
 
+        Deck deckTwo = new Deck();
+
+        Player playerNeung = new Player();
+        Player playerSom = new Player();
+        Player playerSam = new Player();
+        Player playerSi = new Player();
+
+        for (int i = 0; i < 13; i++) {
+            playerNeung.addCardShuffled(i);
+        }
+
+        for (int i = 13; i < 26; i++) {
+            playerSom.addCardShuffled(i);
+        }
+
+        for (int i = 26; i < 39; i++) {
+            playerSam.addCardShuffled(i);
+        }
+
+        for (int i = 39; i < 52; i++) {
+            playerSi.addCardShuffled(i);
+        }
+
+        System.out.println(playerNeung.toString(2));
+
         // Deck of cards initialization. 
         String[] deck = {"3 of Spades", "3 of Clubs", "3 of Diamonds", "3 of Hearts",
                          "4 of Spades", "4 of Clubs", "4 of Diamonds", "4 of Hearts",
@@ -58,7 +83,7 @@ public class Source {
 
         // Printing the players' cards (sorted).
         System.out.println("Here are each individual player's deck of cards:");
-        printCards(playerOne, playerTwo, playerThree, playerFour);
+        printCards(playerNeung, playerSom, playerSam, playerSi);
 
         // Printing the card that has just been played (i.e 3 of Spades).
         System.out.println("Cards on the table");
@@ -66,27 +91,26 @@ public class Source {
         System.out.println(cardsPlayed);
         System.out.println("-------------");
 
-        System.out.println("Player's deck of cards update:");
-        printCards(playerOne, playerTwo, playerThree, playerFour);
-
+        // System.out.println("Player's deck of cards update:");
+        // printCards(playerOne, playerTwo, playerThree, playerFour);
     }
 
     // Method: Printing cards.
-    public static void printCards(ArrayList<String> playerOne, ArrayList<String> playerTwo, ArrayList<String> playerThree, ArrayList<String> playerFour) {
-        for (int i = 0; i < playerOne.size(); i++) {
-            System.out.println(playerOne.get(i));
+    public static void printCards(Player playerNeung, Player playerSom, Player playerSam, Player playerSi) {
+        for (int i = 0; i < playerNeung.getCardShuffled().size(); i++) {
+            System.out.println(playerNeung.getCardShuffled().get(i));
         }
         System.out.println("-------------");
-        for (int i = 0; i < playerTwo.size(); i++) {
-            System.out.println(playerTwo.get(i));
+        for (int i = 0; i < playerSom.getCardShuffled().size(); i++) {
+            System.out.println(playerSom.getCardShuffled().get(i));
         }
         System.out.println("-------------");
-        for (int i = 0; i < playerThree.size(); i++) {
-            System.out.println(playerThree.get(i));
+        for (int i = 0; i < playerSam.getCardShuffled().size(); i++) {
+            System.out.println(playerSam.getCardShuffled().get(i));
         }
         System.out.println("-------------");
-        for (int i = 0; i < playerFour.size(); i++) {
-            System.out.println(playerFour.get(i));
+        for (int i = 0; i < playerSi.getCardShuffled().size(); i++) {
+            System.out.println(playerSi.getCardShuffled().get(i));
         }
         System.out.println("-------------");
     }
@@ -213,9 +237,14 @@ public class Source {
     //  + shuffle cards method
     //  + sort cards method
 
+    // what can that player class has so that we can create player instances?
     // - create a class for players. then inside the Source.java, make 4 instances from that class.
     //  + Player player1 = new Player() etc,.
-    //  + have attributes for that player class. 
+    //  + the Player class will hold an array list of strings. 
+    //    => we will have a method that can add the cards into the Player's array list of string.
+    //    => we will also have a method that can remove the cards from the Player's array list of string.
+    //  + find 3 of Spades method
+    //
 
-    // what can that player class has so that we can create player instances?
+
 }

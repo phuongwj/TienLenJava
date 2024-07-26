@@ -6,114 +6,124 @@ public class Source {
 
         // Scanner in = new Scanner(System.in);
 
-        Deck deckTwo = new Deck();
+        Deck deck = new Deck();
+
+        deck.shuffleDeck();
+
+        // System.out.println(deck.getDeckShuffled(0));
+
+        // ArrayList<String> tomato = new ArrayList<>();
+        // tomato.add(deck.getDeckShuffled(0));
+        // System.out.println(tomato.get(0));
 
         Player playerNeung = new Player();
         Player playerSom = new Player();
         Player playerSam = new Player();
         Player playerSi = new Player();
 
-        for (int i = 0; i < 13; i++) {
-            playerNeung.addCardShuffled(i);
-        }
+        // for (int i = 0; i < 13; i++) {
+        // }
 
-        for (int i = 13; i < 26; i++) {
-            playerSom.addCardShuffled(i);
-        }
+        playerNeung.addDeckShuffled();
 
-        for (int i = 26; i < 39; i++) {
-            playerSam.addCardShuffled(i);
-        }
 
-        for (int i = 39; i < 52; i++) {
-            playerSi.addCardShuffled(i);
-        }
+        // for (int i = 13; i < 26; i++) {
+        //     playerSom.addDeckShuffled(i);
+        // }
 
-        System.out.println(playerNeung.toString(2));
+        // for (int i = 26; i < 39; i++) {
+        //     playerSam.addDeckShuffled(i);
+        // }
+
+        // for (int i = 39; i < 52; i++) {
+        //     playerSi.addDeckShuffled(i);
+        // }
+
+        // System.out.println(playerNeung.toString());
 
         // Deck of cards initialization. 
-        String[] deck = {"3 of Spades", "3 of Clubs", "3 of Diamonds", "3 of Hearts",
-                         "4 of Spades", "4 of Clubs", "4 of Diamonds", "4 of Hearts",
-                         "5 of Spades", "5 of Clubs", "5 of Diamonds", "5 of Hearts",
-                         "6 of Spades", "6 of Clubs", "6 of Diamonds", "6 of Hearts",
-                         "7 of Spades", "7 of Clubs", "7 of Diamonds", "7 of Hearts", 
-                         "8 of Spades", "8 of Clubs", "8 of Diamonds", "8 of Hearts", 
-                         "9 of Spades", "9 of Clubs", "9 of Diamonds", "9 of Hearts",
-                         "10 of Spades", "10 of Clubs", "10 of Diamonds", "10 of Hearts", 
-                         "J of Spades", "J of Clubs", "J of Diamonds", "J of Hearts", 
-                         "Q of Spades", "Q of Clubs", "Q of Diamonds", "Q of Hearts", 
-                         "K of Spades", "K of Clubs", "K of Diamonds", "K of Hearts",
-                         "A of Spades", "A of Clubs", "A of Diamonds", "A of Hearts",
-                         "2 of Spades", "2 of Clubs", "2 of Diamonds", "2 of Hearts"};
+        // String[] deck = {"3 of Spades", "3 of Clubs", "3 of Diamonds", "3 of Hearts",
+        //                  "4 of Spades", "4 of Clubs", "4 of Diamonds", "4 of Hearts",
+        //                  "5 of Spades", "5 of Clubs", "5 of Diamonds", "5 of Hearts",
+        //                  "6 of Spades", "6 of Clubs", "6 of Diamonds", "6 of Hearts",
+        //                  "7 of Spades", "7 of Clubs", "7 of Diamonds", "7 of Hearts", 
+        //                  "8 of Spades", "8 of Clubs", "8 of Diamonds", "8 of Hearts", 
+        //                  "9 of Spades", "9 of Clubs", "9 of Diamonds", "9 of Hearts",
+        //                  "10 of Spades", "10 of Clubs", "10 of Diamonds", "10 of Hearts", 
+        //                  "J of Spades", "J of Clubs", "J of Diamonds", "J of Hearts", 
+        //                  "Q of Spades", "Q of Clubs", "Q of Diamonds", "Q of Hearts", 
+        //                  "K of Spades", "K of Clubs", "K of Diamonds", "K of Hearts",
+        //                  "A of Spades", "A of Clubs", "A of Diamonds", "A of Hearts",
+        //                  "2 of Spades", "2 of Clubs", "2 of Diamonds", "2 of Hearts"};
 
-        // Call shuffle cards method.
-        ArrayList<String> deckShuffled = shuffleCards(deck);
+        // // Call shuffle cards method.
+        // ArrayList<String> deckShuffled = shuffleCards(deck);
 
         // Players initialization.
-        ArrayList<String> playerOne = new ArrayList<>();
-        ArrayList<String> playerTwo = new ArrayList<>();
-        ArrayList<String> playerThree = new ArrayList<>();
-        ArrayList<String> playerFour = new ArrayList<>();
+        // ArrayList<String> playerOne = new ArrayList<>();
+        // ArrayList<String> playerTwo = new ArrayList<>();
+        // ArrayList<String> playerThree = new ArrayList<>();
+        // ArrayList<String> playerFour = new ArrayList<>();
 
         // Cards on the table initialization.
-        ArrayList<String> cardsPlayed = new ArrayList<>();
+        // ArrayList<String> cardsPlayed = new ArrayList<>();
 
         // Distributing the deck of cards into 4 hands (different all 4).
-        for (int i = 0; i < 13; i++) {
-            playerOne.add(deckShuffled.get(i));
-        }
+        // for (int i = 0; i < 13; i++) {
+        //     playerOne.add(deckShuffled.get(i));
+        // }
 
-        for (int i = 13; i < 26; i++) {
-            playerTwo.add(deckShuffled.get(i));
-        }
+        // for (int i = 13; i < 26; i++) {
+        //     playerTwo.add(deckShuffled.get(i));
+        // }
 
-        for (int i = 26; i < 39; i++) {
-            playerThree.add(deckShuffled.get(i));
-        }
+        // for (int i = 26; i < 39; i++) {
+        //     playerThree.add(deckShuffled.get(i));
+        // }
 
-        for (int i = 39; i < 52; i++) {
-            playerFour.add(deckShuffled.get(i));
-        }
+        // for (int i = 39; i < 52; i++) {
+        //     playerFour.add(deckShuffled.get(i));
+        // }
 
-        //Sort cards low to high.
-        sortCards(playerOne, deck);
-        sortCards(playerTwo, deck);
-        sortCards(playerThree, deck);
-        sortCards(playerFour, deck);
+        // //Sort cards low to high.
+        // sortCards(playerOne, deck);
+        // sortCards(playerTwo, deck);
+        // sortCards(playerThree, deck);
+        // sortCards(playerFour, deck);
 
         // Printing the players' cards (sorted).
         System.out.println("Here are each individual player's deck of cards:");
-        printCards(playerNeung, playerSom, playerSam, playerSi);
+        // printCards(playerNeung, playerSom, playerSam, playerSi);
 
         // Printing the card that has just been played (i.e 3 of Spades).
-        System.out.println("Cards on the table");
-        findThreeOfSpades(playerOne, playerTwo, playerThree, playerFour, cardsPlayed, deck);
-        System.out.println(cardsPlayed);
-        System.out.println("-------------");
+        // System.out.println("Cards on the table");
+        // findThreeOfSpades(playerOne, playerTwo, playerThree, playerFour, cardsPlayed, deck);
+        // System.out.println(cardsPlayed);
+        // System.out.println("-------------");
 
         // System.out.println("Player's deck of cards update:");
         // printCards(playerOne, playerTwo, playerThree, playerFour);
     }
-
+ 
     // Method: Printing cards.
-    public static void printCards(Player playerNeung, Player playerSom, Player playerSam, Player playerSi) {
-        for (int i = 0; i < playerNeung.getCardShuffled().size(); i++) {
-            System.out.println(playerNeung.getCardShuffled().get(i));
-        }
-        System.out.println("-------------");
-        for (int i = 0; i < playerSom.getCardShuffled().size(); i++) {
-            System.out.println(playerSom.getCardShuffled().get(i));
-        }
-        System.out.println("-------------");
-        for (int i = 0; i < playerSam.getCardShuffled().size(); i++) {
-            System.out.println(playerSam.getCardShuffled().get(i));
-        }
-        System.out.println("-------------");
-        for (int i = 0; i < playerSi.getCardShuffled().size(); i++) {
-            System.out.println(playerSi.getCardShuffled().get(i));
-        }
-        System.out.println("-------------");
-    }
+    // public static void printCards(Player playerNeung, Player playerSom, Player playerSam, Player playerSi) {
+    //     for (int i = 0; i < playerNeung.getCardShuffled().size(); i++) {
+    //         System.out.println(playerNeung.getCardShuffled().get(i));
+    //     }
+    //     System.out.println("-------------");
+    //     for (int i = 0; i < playerSom.getCardShuffled().size(); i++) {
+    //         System.out.println(playerSom.getCardShuffled().get(i));
+    //     }
+    //     System.out.println("-------------");
+    //     for (int i = 0; i < playerSam.getCardShuffled().size(); i++) {
+    //         System.out.println(playerSam.getCardShuffled().get(i));
+    //     }
+    //     System.out.println("-------------");
+    //     for (int i = 0; i < playerSi.getCardShuffled().size(); i++) {
+    //         System.out.println(playerSi.getCardShuffled().get(i));
+    //     }
+    //     System.out.println("-------------");
+    // }
 
     // Method: Shuffle cards.
     public static ArrayList<String> shuffleCards(String[] deck) {

@@ -24,15 +24,8 @@ public class Deck {
         this.deckShuffled = new ArrayList<>();
     }
     
-    // Getters:
-
-    // Gets deck.
-    public String getDeckCard(int index) {
-        return deck[index];
-    }
-
-    // Gets shuffled deck.
-    public ArrayList<String> getDeckShuffled() {
+    // Shuffle deck.
+    public void shuffleDeck() {
 
         // ArrayList deck of cards initialization.
         for (int i = 0; i < this.deck.length; i++) {
@@ -47,6 +40,19 @@ public class Deck {
             this.deckShuffled.set(i, this.deckShuffled.get(n) );
             this.deckShuffled.set(n, temp);
         }
-        return this.deckShuffled;
     }
+
+    // Getters:
+
+    // Gets deck.
+    public String getDeckCard(int i) {
+        return deck[i];
+    }
+
+    // Gets shuffled deck.
+    public String getDeckShuffled(int i) {
+        return this.deckShuffled.get(i);
+    }
+
+    
 }

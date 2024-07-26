@@ -10,15 +10,15 @@ public class Player {
         this.deck = new Deck();
     }
 
-    public void addCardShuffled(int i) {
-        this.cardsInHand.add(this.deck.getDeckCard(i));
+    public void addDeckShuffled() {
+        this.cardsInHand.add(this.deck.getDeckShuffled(2));
     }
 
-    public ArrayList<String> getCardShuffled() {
-        return this.cardsInHand;
-    }
+    // public ArrayList<String> getCardShuffled() {
+    //     return this.cardsInHand;
+    // }
 
-    public String toString(int i) {
-        return this.cardsInHand.get(i);
-    }
+    // public String toString(int i) {
+    //     return this.cardsInHand.get(i);
+    // }
 }

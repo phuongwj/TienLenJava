@@ -8,17 +8,27 @@ public class Player {
     public Player() {
         this.cardsInHand = new ArrayList<>();
         this.deck = new Deck();
+        this.deck.shuffleDeck();
     }
 
-    public void addDeckShuffled() {
-        this.cardsInHand.add(this.deck.getDeckShuffled(2));
+    // Getters.
+
+    // Get cards in hand (ArrayList).
+    public ArrayList<String> getCardsInHand() {
+        return this.cardsInHand;
+    }
+    
+    // Get shuffled cards in hand individually (Strings).
+    public String getCardShuffled(int i) {
+        return this.cardsInHand.get(i);
     }
 
-    // public ArrayList<String> getCardShuffled() {
-    //     return this.cardsInHand;
-    // }
+    // Methods.
+    
+    // Add shuffled deck to cards in hand.
+    public void addDeckShuffled(int i) {
+        this.cardsInHand.add(this.deck.getDeckShuffled(i));
+    }
 
-    // public String toString(int i) {
-    //     return this.cardsInHand.get(i);
-    // }
+    
 }

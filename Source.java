@@ -91,4 +91,33 @@ public class Source {
     //
 
     // Check discord message via michael.
+    // Can consider where there are two players. This is for further notice when you have options for 
+    // multiplayers in the game.
+//     LENGTH 4 (AKA 4 PLAYERS):
+// - If 3 of Spades is at index 0: keeps still
+
+// - If 3 of Spades is at index 1:
+// (1 % 4) - 1 = 1 - 1 = 0 (move to index 0)
+// (2 % 4) - 1 = 2 - 1 = 1 (move to index 1)
+// (3 % 4) - 1 = 3 - 1 = 2 (move to index 2)
+// + if previous index = 0 => move to index at array.length() - 1 + 0 which means 3
+
+// - If 3 of Spades is at index 2:
+// (2 % 4) - 2 = 2 - 2 = 0 (move to index 0)
+// (3 % 4) - 2 = 3 - 2 = 1 (move to index 1)
+// + if previous index = 0 => move to index at array.length() - 2 + 0 which means 2
+// + if preivous index = 1 => move to index at array.length() - 2 + 1 which means 3
+
+// - If 3 of Spades is at index 3:
+// (3 % 4) - 3 = 3 - 3 = 0 (move to index 0)
+// + if previous index = 0 => move to index at array.length() - 3 + 0 which means 1
+// + if previous index = 1 => move to index at array.length() - 3 + 1 which means 2
+// + if previous index = 2 => move to index at array.length() - 3 + 2 which meas 3
+
+// LENGTH 2 (AKA 2 PLAYERS):
+// - If 3 of Spades is at index 0: keeps still
+
+// - If 3 of Spades is at index 1:
+// (1 % 2) - 1 = 1 - 1 = 0 (move to index 0)
+// + if previous index = 0 => move to index at array.length() - 1 + 0 which means 1
 }

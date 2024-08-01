@@ -56,56 +56,6 @@ public class Deck {
         }
     }
 
-    // Method: Sorting the cards low to high in players' hand using Insertion Sort.
-    public void sortCards(ArrayList<String> player) {
-
-        // Loop through the player's deck.
-        for (int i = 1; i < player.size(); i++) {
-
-            // Created two temporary variables that hold the real card value from the 52 card deck of the player's deck.
-            int tempIndexFirst = 0;
-            int tempIndexTwo = 0;
-
-            // Have temporary string to get the index 1 of the player's card. (Aka, current index going through from i).
-            String tempOne = player.get(i);
-
-            // Previous index of the current index.
-            int tempTwo = i - 1;
-
-            // Getting the real value of the player's cards from the 52-card deck.
-            for (int m = 0; m < this.deck.length; m++) {
-                if (player.get(i).equals(this.deck[m])) {
-                    tempIndexFirst = m;
-                    break;
-                }
-            }
-            for (int l = 0; l < this.deck.length; l++) {
-                if (player.get(tempTwo).equals(this.deck[l])) {
-                    tempIndexTwo = l;
-                    break;
-                }
-            }
-
-            // Compares the indexes from the player's deck by using the real valules received from the 52 deck to see which one comes first.
-            while (tempTwo >= 0 && tempIndexTwo > tempIndexFirst) {
-                player.set(tempTwo + 1, player.get(tempTwo));
-                tempTwo--;
-
-                // Reset tempIndexTwo so that after 1 or more loops, when the previous cards are still larger than the "i" card. So we can keep 
-                // comparing. But only compare when temptwo isn't negative. (Aka, out of bounds).
-                if (!(tempTwo < 0)) {
-                    for (int j = 0; j < this.deck.length; j++) {
-                        if (player.get(tempTwo).equals(this.deck[j])) {
-                            tempIndexTwo = j;
-                            break;
-                        }
-                    }
-                }
-            }
-            player.set(tempTwo + 1, tempOne);
-        }
-    }
-
     // Method: Printing cards.
     public void printCards(Player[] player) {
         for (int m = 0; m < 4; m++) {

@@ -25,7 +25,7 @@ public class Source {
 
         // Sorting cards low to high for 4 Players.
         for (int i = 0; i < 4; i++) {
-            deck.sortCards(player[i].getCardsInHand());
+            player[i].sortCards();
         }
 
         // After sorted.
@@ -39,9 +39,12 @@ public class Source {
 
     // 1. Switch the individual Player to an array that can hold classes.
     //   + create method that can remove the cards from the Player's array list of strings.
+    //     => You don't have to write this because you can just get the whole array then do .remove() in the main class or somewhere that you wanna remove it.
     // 2. Find 3 of Spades method only for the first game.
     // 3. Do the rotation thingy.
     // 4. Deal the cards.
     // 5. Figure out how you would keep track of who finishes the game before first so that the next game, that 
     //    person will get to deal the cards first. 
+
+    // DONE: 1.
 }

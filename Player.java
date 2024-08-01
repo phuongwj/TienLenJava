@@ -13,21 +13,16 @@ public class Player {
 
     // Getters.
 
-    // Get cards in hand (ArrayList).
+    // Get cards in hand.
     public ArrayList<String> getCardsInHand() {
         return this.cardsInHand;
-    }
-    
-    // Get shuffled cards in hand individually (Strings).
-    public String getCardShuffled(int i) {
-        return this.cardsInHand.get(i);
     }
 
     // Methods.
     
     // Add shuffled deck to cards in hand.
     public void addDeckShuffled(int i) {
-        this.cardsInHand.add(this.deck.getDeckShuffled(i));
+        this.cardsInHand.add(this.deck.getDeckShuffled().get(i));
     }
 
     

@@ -28,17 +28,17 @@ public class Deck {
 
     // Gets deck.
     public String[] getDeckCard() {
-        return deck;
+        return this.deck;
     }
 
     // Gets shuffled deck.
-    public String getDeckShuffled(int i) {
-        return this.deckShuffled.get(i);
+    public ArrayList<String> getDeckShuffled() {
+        return this.deckShuffled;
     }
 
     // Methods:
 
-    // Method: Shuffle deck.
+    // Method: Shuffle deck. (Distributing 13 cards differently to all players)
     public void shuffleDeck() {
 
         // ArrayList deck of cards initialization.
@@ -56,7 +56,7 @@ public class Deck {
         }
     }
 
-    // Method: Sorting the cards low to high using Insertion Sort.
+    // Method: Sorting the cards low to high in players' hand using Insertion Sort.
     public void sortCards(ArrayList<String> player) {
 
         // Loop through the player's deck.
@@ -107,26 +107,13 @@ public class Deck {
     }
 
     // Method: Printing cards.
-    public void printCards(Player playerNeung, Player playerSom, Player playerSam, Player playerSi) {
-        for (int i = 0; i < 13; i++) {
-            System.out.println(playerNeung.getCardShuffled(i));
+    public void printCards(Player[] player) {
+        for (int m = 0; m < 4; m++) {
+            for (int j = 0; j < 13; j++) {
+                System.out.println(player[m].getCardsInHand().get(j));
+            }
+            System.out.println("-------------");
         }
-        System.out.println("-------------");
-
-        for (int i = 0; i < 13; i++) {
-            System.out.println(playerSom.getCardShuffled(i));
-        }
-        System.out.println("-------------");
-
-        for (int i = 0; i < 13; i++) {
-            System.out.println(playerSam.getCardShuffled(i));
-        }
-        System.out.println("-------------");
-        
-        for (int i = 0; i < 13; i++) {
-            System.out.println(playerSi.getCardShuffled(i));
-        }
-        System.out.println("-------------");
     }
 
     // Method: Find 3 of Spades.

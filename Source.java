@@ -4,46 +4,34 @@ public class Source {
         // New deck initialization.
         Deck deck = new Deck();
 
-        // Players initialization.
-        Player playerNeung = new Player();
-        Player playerSom = new Player();
-        Player playerSam = new Player();
-        Player playerSi = new Player();
-
-        // An array of Players initialization.
+        // An array of Players.
         Player[] player = new Player[4];
 
-        for (int i = 0; i < 13; i++) {
-            playerNeung.addDeckShuffled(i);
-        }
-        
-        for (int i = 13; i < 26; i++) {
-            playerSom.addDeckShuffled(i);
+        // Individual Players initialization.
+        for (int i = 0; i < 4; i++) {
+            player[i] = new Player();
         }
 
-        for (int i = 26; i < 39; i++) {
-            playerSam.addDeckShuffled(i);
-        }
-    
-        for (int i = 39; i < 52; i++) {
-            playerSi.addDeckShuffled(i);
+        // Adding shuffled deck into Players' hands.
+        for (int i = 0; i < 52; i++) {
+            int currPlayer = i / 13;
+            player[currPlayer].addDeckShuffled(i); 
         }
 
         // Before sorted.
         System.out.println("Before sorted:");
         System.out.println();
-        deck.printCards(playerNeung, playerSam, playerSi, playerSom);
+        deck.printCards(player);
 
-        // Sorting cards low to high.
-        deck.sortCards(playerNeung.getCardsInHand());
-        deck.sortCards(playerSom.getCardsInHand());
-        deck.sortCards(playerSam.getCardsInHand());
-        deck.sortCards(playerSi.getCardsInHand());
+        // Sorting cards low to high for 4 Players.
+        for (int i = 0; i < 4; i++) {
+            deck.sortCards(player[i].getCardsInHand());
+        }
 
         // After sorted.
         System.out.println("After sorted:");
         System.out.println();
-        deck.printCards(playerNeung, playerSam, playerSi, playerSom);
+        deck.printCards(player);
     }
 
     // Can consider where there are atleast two players playing against each other. This is for further notice 

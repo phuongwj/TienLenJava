@@ -46,5 +46,16 @@ public class Source {
     // 5. Figure out how you would keep track of who finishes the game before first so that the next game, that 
     //    person will get to deal the cards first. 
 
+    // Like say we havev player[2] came in first, player[1] came in second. What's the scoring system?
+    //  - Scoring system: 3 points for coming first, 2 points for coming in second, 1 point for coming in third.
+    //  - How do we keep the scores for each individual players?
+    //    + We have a counter method and does ++ base on what place they came in. 
+    //      => Base on the system to determine who finishes their cards first and after.
+    // How to have a system to determine who finishes their cards first? 
+    //  - Keeps a log of who came in first so that the next round if the players do agree to keep playing based on the previous round then the
+    //    player who came in first will go first for the next round. No more 3 of Spades for every single round. 
+    //    + Set boolean to true to the person that came in first, all Players have their boolean set to false, and when they finishes first
+    
+
     // DONE: 1.
 }

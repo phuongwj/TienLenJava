@@ -51,11 +51,13 @@ public class Source {
     //  - How do we keep the scores for each individual players?
     //    + We have a counter method and does ++ base on what place they came in. 
     //      => Base on the system to determine who finishes their cards first and after.
+    //  - According to [1] down below, once we have set that Player's boolean to true. 
     // How to have a system to determine who finishes their cards first? 
     //  - Keeps a log of who came in first so that the next round if the players do agree to keep playing based on the previous round then the
     //    player who came in first will go first for the next round. No more 3 of Spades for every single round. 
-    //    + Set boolean to true to the person that came in first, all Players have their boolean set to false, and when they finishes first
-    
+    //    + Set boolean to true to the person that came in first, all Players have their boolean set to false, and when they finishes first, it will be set to true.
+    //      => How do we determine if they're the FIRST to finish? After every single card that the Player has dealt, we check the cards in their hands to see if 
+    //         they have an empty array list, if they do. We set that boolean to true for that Player, indicating that they're first. [1]
 
-    // DONE: 1.
+    // Either have a 3 booleans for comesInFirst, comesInSecond, comesInThird or have an array list that pushes Players in order of whos coming in first, second, third, last.
 }

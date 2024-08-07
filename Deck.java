@@ -71,7 +71,7 @@ public class Deck {
     // Method: Printing cards.
     public void printCardsInHand(ArrayList<Player> players) {
         for (int m = 0; m < 4; m++) {
-            for (int j = 0; j < 13; j++) {
+            for (int j = 0; j < players.get(m).getCardsInHand().size(); j++) {
                 System.out.println(players.get(m).getCardsInHand().get(j));
             }
             System.out.println("-------------");

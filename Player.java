@@ -41,13 +41,13 @@ public class Player {
 
             // Getting the real value of the Player's cards from the 52-card deck.
             for (int m = 0; m < this.deck.getDeckCard().length; m++) {
-                if (this.cardsInHand.get(i).equals(this.deck.getDeckCard()[m])) {
+                if (this.cardsInHand.get(i).equals(deck.getDeckCard()[m])) {
                     tempIndexFirst = m;
                     break;
                 }
             }
-            for (int l = 0; l < this.deck.getDeckCard().length; l++) {
-                if (this.cardsInHand.get(tempTwo).equals(this.deck.getDeckCard()[l])) {
+            for (int l = 0; l < deck.getDeckCard().length; l++) {
+                if (this.cardsInHand.get(tempTwo).equals(deck.getDeckCard()[l])) {
                     tempIndexTwo = l;
                     break;
                 }
@@ -61,8 +61,8 @@ public class Player {
                 // Reset tempIndexTwo so that after 1 or more loops, when the previous cards are still larger than the "i" card. So we can keep 
                 // comparing. But only compare when tempTwo isn't negative. (Aka, out of bounds).
                 if (!(tempTwo < 0)) {
-                    for (int j = 0; j < this.deck.getDeckCard().length; j++) {
-                        if (this.cardsInHand.get(tempTwo).equals(this.deck.getDeckCard()[j])) {
+                    for (int j = 0; j < deck.getDeckCard().length; j++) {
+                        if (this.cardsInHand.get(tempTwo).equals(deck.getDeckCard()[j])) {
                             tempIndexTwo = j;
                             break;
                         }
@@ -74,7 +74,7 @@ public class Player {
     }
 
     // Method: Call shuffle deck.
-    public static void callShuffleDeck() {
+    public static void shuffleDeck() {
         deck.shuffleDeck();
         System.out.println(deck.getDeckShuffled());
     }

@@ -69,32 +69,30 @@ public class Deck {
     }
 
     // Method: Printing cards.
-    public void printCardsInHand(ArrayList<Player> player) {
+    public void printCardsInHand(ArrayList<Player> players) {
         for (int m = 0; m < 4; m++) {
             for (int j = 0; j < 13; j++) {
-                System.out.println(player.get(m).getCardsInHand().get(j));
+                System.out.println(players.get(m).getCardsInHand().get(j));
             }
             System.out.println("-------------");
         }
     }
 
     // Method: Printing cards played.
-    public void printCardsInHand() {
-        for (int v = 0; v < getCardsPlayed().size(); v++) {
-            System.out.println(getCardsPlayed().get(v));
-        }
+    public void printCardsPlayed() {
+        System.out.println(getCardsPlayed());
     }
 
     // Method: Find 3 of Spades.
-    public void findThreeOfSpades(ArrayList<Player> player) {
+    public void findThreeOfSpades(ArrayList<Player> players) {
 
         // Going through all of the player's deck to find 3 of Spades, add that to the cardsPlayed then remove it from the player. 
         // Also updates the player's card deck if found 3 of Spades.
         for (int i = 0; i < 4; i++) {
-            if (player.get(i).getCardsInHand().get(0).equals(this.deck[0])) {
+            if (players.get(i).getCardsInHand().get(0).equals(this.deck[0])) {
                 this.indexThreeOfSpades = i;
-                this.cardsPlayed.add(player.get(i).getCardsInHand().get(0));
-                player.get(i).getCardsInHand().remove(0);
+                this.cardsPlayed.add(players.get(i).getCardsInHand().get(0));
+                players.get(i).getCardsInHand().remove(0);
                 break;
             }
         }

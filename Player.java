@@ -2,13 +2,11 @@ import java.util.ArrayList;
 
 public class Player {
     private ArrayList<String> cardsInHand;
-    private Deck deck;
+    private static Deck deck = new Deck();
 
     // Constructors.
     public Player() {
         this.cardsInHand = new ArrayList<>();
-        this.deck = new Deck();
-        this.deck.shuffleDeck();
     }
 
     // Getters.
@@ -73,5 +71,11 @@ public class Player {
             }
             this.cardsInHand.set(tempTwo + 1, tempOne);
         }
+    }
+
+    // Method: Call shuffle deck.
+    public static void callShuffleDeck() {
+        deck.shuffleDeck();
+        System.out.println(deck.getDeckShuffled());
     }
 }

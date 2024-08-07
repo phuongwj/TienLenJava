@@ -7,39 +7,91 @@ public class Source {
         Deck deck = new Deck();
 
         // An array of Players.
-        ArrayList<Player> player = new ArrayList<>(4);
+        ArrayList<Player> players = new ArrayList<>(4);
+        // ArrayList<Player> players2 = new ArrayList<>(4);
 
         // Individual Players initialization.
         for (int i = 0; i < 4; i++) {
-            player.add(new Player());
+            players.add(new Player());
+            // players2.add(new Player());
         }
+
+        Player.callShuffleDeck();
 
         // Adding shuffled deck into Players' hands.
         for (int i = 0; i < 52; i++) {
             int currPlayer = i / 13;
-            player.get(currPlayer).addDeckShuffled(i);
+            players.get(currPlayer).addDeckShuffled(i);
+            // players2.get(currPlayer).addDeckShuffled(i);
         }
+
+        // for (int i = 0; i < 13; i++) {
+        //     players.get(0).addDeckShuffled(i);
+        // }
+
+        // for (int i = 13; i < 26; i++) {
+        //     players.get(1).addDeckShuffled(i);
+        // }
+
+        // for (int i = 26; i < 39; i++) {
+        //     players.get(2).addDeckShuffled(i);
+        // }
+
+        // for (int i = 39; i < 52; i++) {
+        //     players.get(3).addDeckShuffled(i);
+        // }
+
+        // for (int i = 0; i < 4; i++) {
+        //     for (int j = 0; j < 13; j++) {
+        //         System.out.println(players.get(i).getCardsInHand().get(j));
+        //     }
+        //     System.out.println();
+        // }
+
+        // for (int i = 0; i < 4; i++) {
+        //     players.get(i).sortCards();
+        // }
+
+        // System.out.println("-------------------");
+        // for (int i = 0; i < 4; i++) {
+        //     for (int j = 0; j < 13; j++) {
+        //         System.out.println(players.get(i).getCardsInHand().get(j));
+        //     }
+        //     System.out.println();
+        // }
 
         // Before sorted.
         System.out.println("Before sorted:");
         System.out.println();
-        deck.printCardsInHand(player);
+        System.out.println("Player 1");
+        deck.printCardsInHand(players);
 
         // Sorting cards low to high for 4 Players.
         for (int i = 0; i < 4; i++) {
-            player.get(i).sortCards();
+            players.get(i).sortCards();
         }
 
         // After sorted.
         System.out.println("After sorted:");
         System.out.println();
-        deck.printCardsInHand(player);
+        System.out.println("Player 1");
+        deck.printCardsInHand(players);
 
-        // Find 3 of Spades.
-        System.out.println("Find 3 of Spades");
-        System.out.println();
-        deck.findThreeOfSpades(player);
-        deck.printCardsInHand();
+        // // Find 3 of Spades.
+        // System.out.println("Find 3 of Spades");
+        // System.out.println();
+        // System.out.println("Player 1");
+        // deck.findThreeOfSpades(players);
+
+        // System.out.println("First player: ");
+        // for (int i = 0; i < 13; i++) {
+        //     System.out.println(players.get(0).getCardsInHand().get(i));
+        // }
+        // System.out.println("-----------------");
+        // System.out.println("Second player: ");
+        // for (int i = 0; i < 13; i++) {
+        //     System.out.println(players.get(1).getCardsInHand().get(i));
+        // }
     }
 
     // Can consider where there are atleast two players playing against each other. This is for further notice 

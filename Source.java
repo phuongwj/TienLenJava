@@ -1,7 +1,11 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Source {
     public static void main(String[] args) {
+
+        // Scanner initialization.
+        Scanner in = new Scanner(System.in);
 
         // New deck initialization.
         Deck deck = new Deck();
@@ -41,13 +45,15 @@ public class Source {
         // Find 3 of Spades.
         System.out.println("Find 3 of Spades:" + "\n");
         deck.findThreeOfSpades(players);
-        System.out.println("Player " + players.get(deck.getIndexThreeOfSpades()).getPlayerId() + " has 3 of Spades");
+        System.out.println("Player " + (deck.getIndexThreeOfSpades() + 1) + " has 3 of Spades");
         deck.printCardsPlayed();
 
         // Players cards in hand after 3 of Spades.
         System.out.println();
         System.out.println("After finding 3 of Spades:" + "\n");
         deck.printCardsInHand(players);
+
+        
     }
 
     // Can consider where there are atleast two players playing against each other. This is for further notice 

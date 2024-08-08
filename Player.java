@@ -5,6 +5,8 @@ public class Player {
     private static Deck deck = new Deck();
     private static int playerIdCount;
     private int playerId;
+    private String cardPlayed;
+    private String cardInHand;
 
     // Constructors.
     public Player() {
@@ -90,5 +92,13 @@ public class Player {
     // Method: Set playerId.
     public void setPlayerId() {
         this.playerId = playerIdCount;
+    }
+
+    // Method: Deal card.
+    public void dealCard(ArrayList<String> cardsPlayed) {
+        if (cardsPlayed.size() < 1) {
+            this.cardInHand = cardsPlayed.get(0);
+        }
+        
     }
 }

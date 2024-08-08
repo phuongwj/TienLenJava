@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.ArrayList; 
 
 public class Player {
     private ArrayList<String> cardsInHand;
@@ -20,7 +20,7 @@ public class Player {
     
     // Method: Add shuffled deck to cards in hand.
     public void addDeckShuffled(int i) {
-        this.cardsInHand.add(this.deck.getDeckShuffled().get(i));
+        this.cardsInHand.add(deck.getDeckShuffled().get(i));
     }
 
     // Method: Sorting the cards low to high in Players' hand using Insertion Sort.
@@ -40,7 +40,7 @@ public class Player {
             int tempTwo = i - 1;
 
             // Getting the real value of the Player's cards from the 52-card deck.
-            for (int m = 0; m < this.deck.getDeckCard().length; m++) {
+            for (int m = 0; m < deck.getDeckCard().length; m++) {
                 if (this.cardsInHand.get(i).equals(deck.getDeckCard()[m])) {
                     tempIndexFirst = m;
                     break;
@@ -76,6 +76,5 @@ public class Player {
     // Method: Call shuffle deck.
     public static void shuffleDeck() {
         deck.shuffleDeck();
-        System.out.println(deck.getDeckShuffled());
     }
 }

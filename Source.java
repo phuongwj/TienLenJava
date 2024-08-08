@@ -26,9 +26,9 @@ public class Source {
         }
 
         // Before sorted.
-        System.out.println("Before sorted:");
-        System.out.println();
-        deck.printCardsInHand(players);
+        // System.out.println("Before sorted:");
+        // System.out.println();
+        // deck.printCardsInHand(players);
 
         // Sorting cards low to high for 4 Players.
         for (int i = 0; i < 4; i++) {

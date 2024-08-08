@@ -5,6 +5,7 @@ public class Deck {
     private ArrayList<String> deckShuffled;
     private ArrayList<String> cardsPlayed;
     private int indexThreeOfSpades;
+    private RoundAndRound turnManager;
 
     // Constructors.
     public Deck() {
@@ -26,6 +27,7 @@ public class Deck {
         this.deckShuffled = new ArrayList<>();
         this.cardsPlayed = new ArrayList<>();
         this.indexThreeOfSpades = 0;
+        this.turnManager = new RoundAndRound();
     }
 
     // Getters:
@@ -96,5 +98,6 @@ public class Deck {
                 break;
             }
         }
+        this.turnManager.rotateTurns(this.indexThreeOfSpades, players);
     }
 }

@@ -83,7 +83,7 @@ public class Deck {
 
     // Method: Printing cards played.
     public void printCardsPlayed() {
-        System.out.println("Table: " + getCardsPlayed());
+        System.out.println("Table: " + getCardsPlayed() + "\n");
     }
 
     // Method: Find 3 of Spades.

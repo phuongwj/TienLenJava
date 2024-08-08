@@ -5,8 +5,6 @@ public class Player {
     private static Deck deck = new Deck();
     private static int playerIdCount;
     private int playerId;
-    private String cardPlayed;
-    private String cardInHand;
 
     // Constructors.
     public Player() {
@@ -95,10 +93,38 @@ public class Player {
     }
 
     // Method: Deal card.
-    public void dealCard(ArrayList<String> cardsPlayed) {
-        if (cardsPlayed.size() < 1) {
-            this.cardInHand = cardsPlayed.get(0);
+    public void dealCard(String cardInHand) {
+
+        int indexCardPlayed = 0;
+        int indexCardInHand = 0;
+
+        String cardPlayed = "";
+
+        if (deck.getCardsPlayed().size() < 1) {
+            cardPlayed = deck.getCardsPlayed().get(0);
+        } else if (deck.getCardsPlayed().size() > 1) {
+            cardPlayed = deck.getCardsPlayed().get(deck.getCardsPlayed().size() - 1);
         }
-        
+
+        for (int m = 0; m < deck.getDeckCard().length; m++) {
+            if (cardPlayed.equals(deck.getDeckCard()[m])) {
+                indexCardPlayed = m;
+                break;
+            }
+        }
+
+        for (int l = 0; l < deck.getDeckCard().length; l++) {
+            if (cardInHand.equals(deck.getDeckCard()[l])) {
+                indexCardInHand = l;
+                break;
+            }
+        }
+
+        if (indexCardInHand > indexCardPlayed) {
+            deck.getCardsPlayed().set(0, cardInHand);
+            this.getCardsInHand().remove(indexCardInHand);
+        } else {
+            System.out.println("Card in hand is smaller than card on table!");
+        }
     }
 }

@@ -49,10 +49,10 @@ public class Source {
         deck.printCardsPlayed();
 
         // Players cards in hand after 3 of Spades.
-        System.out.println();
         System.out.println("After finding 3 of Spades:" + "\n");
         deck.printCardsInHand(players);
 
+        // Players dealing their cards.
         
     }
 
@@ -65,8 +65,9 @@ public class Source {
     // 2. Find 3 of Spades method only for the first game.
     // 3. Do the rotation thingy.
     // 4. Deal the cards.
-    // 5. Remove the cards that the player 
-    // 5. Figure out how you would keep track of who finishes the game before first so that the next game, that 
+    // 5. Pass turn.
+    // 6. Remove the cards that the player has dealt (Can be done inside the dealCard method).
+    // 7. Figure out how you would keep track of who finishes the game before first so that the next game, that 
     //    person will get to deal the cards first. 
 
     // Like say we have player[2] came in first, player[1] came in second. What's the scoring system?

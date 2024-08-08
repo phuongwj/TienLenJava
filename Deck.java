@@ -73,16 +73,17 @@ public class Deck {
     // Method: Printing cards.
     public void printCardsInHand(ArrayList<Player> players) {
         for (int m = 0; m < 4; m++) {
+            System.out.println("- Player " + players.get(m).getPlayerId() + "\n");
             for (int j = 0; j < players.get(m).getCardsInHand().size(); j++) {
                 System.out.println(players.get(m).getCardsInHand().get(j));
             }
-            System.out.println("-------------");
+            System.out.println("-------------" + "\n");
         }
     }
 
     // Method: Printing cards played.
     public void printCardsPlayed() {
-        System.out.println(getCardsPlayed());
+        System.out.println("Table: " + getCardsPlayed());
     }
 
     // Method: Find 3 of Spades.

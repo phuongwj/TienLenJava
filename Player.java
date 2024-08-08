@@ -3,10 +3,14 @@ import java.util.ArrayList;
 public class Player {
     private ArrayList<String> cardsInHand;
     private static Deck deck = new Deck();
+    private static int playerIdCount;
+    private int playerId;
 
     // Constructors.
     public Player() {
         this.cardsInHand = new ArrayList<>();
+        playerIdCount++;
+        this.playerId = 0;
     }
 
     // Getters.
@@ -14,6 +18,11 @@ public class Player {
     // Get cards in hand.
     public ArrayList<String> getCardsInHand() {
         return this.cardsInHand;
+    }
+
+    // Get players' id.
+    public int getPlayerId() {
+        return playerId;
     }
 
     // Methods.
@@ -76,5 +85,10 @@ public class Player {
     // Method: Call shuffle deck.
     public static void shuffleDeck() {
         deck.shuffleDeck();
+    }
+
+    // Method: Set playerId.
+    public void setPlayerId() {
+        this.playerId = playerIdCount;
     }
 }

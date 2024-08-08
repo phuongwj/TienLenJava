@@ -8,12 +8,11 @@ public class Source {
 
         // An array of Players.
         ArrayList<Player> players = new ArrayList<>(4);
-        // ArrayList<Player> players2 = new ArrayList<>(4);
 
         // Individual Players initialization.
         for (int i = 0; i < 4; i++) {
             players.add(new Player());
-            // players2.add(new Player());
+            players.get(i).setPlayerId();
         }
 
         // Player calls shuffle deck method.
@@ -36,20 +35,18 @@ public class Source {
         }
 
         // After sorted.
-        System.out.println("After sorted:");
-        System.out.println();
+        System.out.println("After sorted:" + "\n");
         deck.printCardsInHand(players);
 
         // Find 3 of Spades.
-        System.out.println();
-        System.out.println("Find 3 of Spades");
+        System.out.println("Find 3 of Spades:" + "\n");
         deck.findThreeOfSpades(players);
+        System.out.println("Player " + players.get(deck.getIndexThreeOfSpades()).getPlayerId() + " has 3 of Spades");
         deck.printCardsPlayed();
-        System.out.println(deck.getIndexThreeOfSpades());
 
         // Players cards in hand after 3 of Spades.
         System.out.println();
-        System.out.println("After finding 3 of Spades");
+        System.out.println("After finding 3 of Spades:" + "\n");
         deck.printCardsInHand(players);
     }
 

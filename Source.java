@@ -85,4 +85,6 @@ public class Source {
     //         they have an empty array list, if they do. We set that boolean to true for that Player, indicating that they're first. [1]
 
     // Either have a 3 booleans for comesInFirst, comesInSecond, comesInThird or have an array list that pushes Players in order of whos coming in first, second, third, last.
+
+    // boolean for turns
 }

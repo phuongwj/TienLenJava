@@ -122,7 +122,7 @@ public class Player {
 
         if (indexCardInHand > indexCardPlayed) {
             deck.getCardsPlayed().set(0, cardInHand);
-            this.getCardsInHand().remove(indexCardInHand);
+            this.getCardsInHand().remove(cardInHand);
         } else {
             System.out.println("Card in hand is smaller than card on table!");
         }

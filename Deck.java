@@ -94,8 +94,8 @@ public class Deck {
         for (int i = 0; i < 4; i++) {
             if (players.get(i).getCardsInHand().get(0).equals(this.deck[0])) {
                 this.indexThreeOfSpades = i;
-                this.cardsPlayed.add(players.get(i).getCardsInHand().get(0));
-                players.get(i).getCardsInHand().remove(0);
+                // this.cardsPlayed.add(players.get(i).getCardsInHand().get(0));
+                // players.get(i).getCardsInHand().remove(0);
                 break;
             }
         }

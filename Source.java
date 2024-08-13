@@ -28,11 +28,6 @@ public class Source {
             players.get(currPlayer).addDeckShuffled(i);
         }
 
-        // Before sorted.
-        // System.out.println("Before sorted:");
-        // System.out.println();
-        // deck.printCardsInHand(players);
-
         // Sorting cards low to high for 4 Players.
         for (int i = 0; i < 4; i++) {
             players.get(i).sortCards();
@@ -60,16 +55,17 @@ public class Source {
     // The first if condition will be that to check if player at index 0 has 3 of Spades, which ideally should because we pushed it to the array list already.
     // If the player has it then we will force that player to play 3 of Spades and then we will move on to int i = 1. So on and so on. A for loop that starts from 0 to < 4.
     // Throughout the loop, if the player plays then set the hasDealtCard boolean to true.
+    // So in the second for loop, we're gonna have an if statement at every single index to see that if they have the boolean dealtTheCard set to true. If it's true then they
+    // get to play, if it's not true then they don't get to play, if it's their turn and they say that they're gonna pass the turn then we also set their boolean dealtTheCard 
+    // to false. 
     // For the outer loop:
     // This is going to be a while loop, we don't know what the condition will be yet, but there's gonna be a counter. We're going to be having two for loops inside the
     // while loop. The if condition that execute the first for loop will be if counter = 0 (i.e indicating that its the first round and will decide the hasDealtCard boolean).
     // The second for loop will be executed if the counter is larger than 0 (meaning that after 1 rotation of the players playing their cards, another rotation starts again).
-    // So in the second for loop, we're gonna have an if statement at every single index to see that if they have the boolean dealtTheCard set to true. If it's true then they
-    // get to play, if it's not true then they don't get to play, if it's their turn and they say that they're gonna pass the turn then we also set their boolean dealtTheCard 
-    // to false. 
-
-
     
+
+
+
     // Can consider where there are atleast two players playing against each other. This is for further notice 
     // when you have options for multiplayers in the game.
 

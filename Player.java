@@ -5,12 +5,16 @@ public class Player {
     private static Deck deck = new Deck();
     private static int playerIdCount;
     private int playerId;
+    private boolean has3OfSpades;
+    private boolean hasDealtCard;
 
     // Constructors.
     public Player() {
         this.cardsInHand = new ArrayList<>();
         playerIdCount++;
         this.playerId = 0;
+        this.has3OfSpades = false;
+        this.hasDealtCard = false;
     }
 
     // Getters.
@@ -22,7 +26,17 @@ public class Player {
 
     // Get players' id.
     public int getPlayerId() {
-        return playerId;
+        return this.playerId;
+    }
+
+    // Get whether if player has 3 of Spades.
+    public boolean has3OfSpades() {
+        return this.has3OfSpades;
+    }
+
+    // Get whether if player has dealt card.
+    public boolean hasDealtCard() {
+        return this.hasDealtCard;
     }
 
     // Methods.
@@ -134,5 +148,15 @@ public class Player {
         } else {
             System.out.println("Card in hand is smaller than card on table!");
         }
+    }
+
+    // Method: Setting the has3OfSpades to true/false.
+    public void setHas3OfSpades(boolean sth) {
+        this.has3OfSpades = sth;
+    }
+
+    // Method: Setting the hasDealtCard to true/false.
+    public void setHasDealtCard(boolean sth) {
+        this.hasDealtCard = sth;
     }
 }

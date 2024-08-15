@@ -43,11 +43,22 @@ public class Source {
         System.out.println("Player " + (deck.getIndexThreeOfSpades() + 1) + " has 3 of Spades, so they get to deal card first.");
 
         // Players cards in hand after 3 of Spades.
-        System.out.println("After finding 3 of Spades:" + "\n");
+        System.out.println("After finding 3 of Spades" + "\n");
         deck.printCardsInHand(players);
 
+        String option = "";
+        String cardToBeDealt = "";
+        int rounds = 0;
+        int totalNumOfPasses = 0;
+
         // Players dealing their cards.
-        
+        while ( !(deck.gameHasEnded(players)) ) {
+            if (rounds < 1) {
+                for (int i = 0; i < players.size(); i++) {
+
+                }
+            }
+        }
     }
 
     // So say we call the findThreeOfSpades method. That method will only find 3 of Spades, in order to re-order the array list to determine who's going first. 

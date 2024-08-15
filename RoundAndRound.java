@@ -11,7 +11,7 @@ public class RoundAndRound {
 
     // Method: Rotate players' turns.
     public void rotateTurns(int indexThreeOfSpades, ArrayList<Player> players) {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < players.size(); i++) {
             if (indexThreeOfSpades == 0) {
                 break;
             } else if (indexThreeOfSpades > i) {

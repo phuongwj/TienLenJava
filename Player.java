@@ -97,17 +97,19 @@ public class Player {
 
         // Created two temporary variables that hold the real card value from the 52 card deck of the Player's deck.
         int indexCardPlayed = 0;
-        int indexCardInHand = 0;
+        int indexCardToBeDealt = 0;
 
         // Initialized the card played on the table.
         String cardPlayed = "";
 
         // Set the card on the table to the string for comparisons. If it's just one card then first if, else if it's a whole sequence then get the last index only.
-        if (deck.getCardsPlayed().size() < 1) {
-            cardPlayed = deck.getCardsPlayed().get(0);
-        } else if (deck.getCardsPlayed().size() > 1) {
-            cardPlayed = deck.getCardsPlayed().get(deck.getCardsPlayed().size() - 1);
-        }
+        // if (deck.getCardsPlayed().size() < 1) {
+        //     cardPlayed = deck.getCardsPlayed().get(0);
+        // } else if (deck.getCardsPlayed().size() > 1) {
+        //     cardPlayed = deck.getCardsPlayed().get(deck.getCardsPlayed().size() - 1);
+        // }
+
+        cardPlayed = deck.getCardsPlayed().get(0);
 
         // Get the real index value of the card on the table.
         for (int m = 0; m < deck.getDeckCard().length; m++) {
@@ -120,13 +122,13 @@ public class Player {
         // Get the real index value of the card to be dealt.
         for (int l = 0; l < deck.getDeckCard().length; l++) {
             if (cardToBeDealt.equals(deck.getDeckCard()[l])) {
-                indexCardInHand = l;
+                indexCardToBeDealt = l;
                 break;
             }
         }
 
         // Compare the indexes of card on the table and card to be dealt to see which one is stronger.
-        if (indexCardInHand > indexCardPlayed) {
+        if (indexCardToBeDealt > indexCardPlayed) {
             deck.getCardsPlayed().set(0, cardToBeDealt);
             this.getCardsInHand().remove(cardToBeDealt);
         } else {

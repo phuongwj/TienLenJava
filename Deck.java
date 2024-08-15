@@ -6,6 +6,8 @@ public class Deck {
     private ArrayList<String> cardsPlayed;
     private int indexThreeOfSpades;
     private RoundAndRound turnManager;
+    private int playerFinishCounter;
+    private boolean gameHasEnded;
 
     // Constructors.
     public Deck() {
@@ -28,6 +30,8 @@ public class Deck {
         this.cardsPlayed = new ArrayList<>();
         this.indexThreeOfSpades = 0;
         this.turnManager = new RoundAndRound();
+        this.playerFinishCounter = 0;
+        this.gameHasEnded = false;
     }
 
     // Getters:
@@ -100,5 +104,18 @@ public class Deck {
             }
         }
         this.turnManager.rotateTurns(this.indexThreeOfSpades, players);
+    }
+    
+    // Method: Check if game has finished.
+    public boolean gameHasEnded(ArrayList<Player> players) {
+        if (playerFinishCounter == 3) {
+            this.gameHasEnded = true;
+        } 
+        for (int i = 0; i < players.size(); i++) {
+            if (players.get(i).getCardsInHand().isEmpty()) {
+                playerFinishCounter++;
+            }
+        }
+        return this.gameHasEnded;
     }
 }

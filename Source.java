@@ -63,7 +63,7 @@ public class Source {
     // while loop. The if condition that execute the first for loop will be if counter = 0 (i.e indicating that its the first round and will decide the hasDealtCard boolean).
     // The second for loop will be executed if the counter is larger than 0 (meaning that after 1 rotation of the players playing their cards, another rotation starts again).
     
-
+    // Check notes.
 
 
     // Can consider where there are atleast two players playing against each other. This is for further notice 

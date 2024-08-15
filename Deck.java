@@ -98,6 +98,7 @@ public class Deck {
         for (int i = 0; i < players.size(); i++) {
             if (players.get(i).getCardsInHand().get(0).equals(this.deck[0])) {
                 this.indexThreeOfSpades = i;
+                players.get(i).setHas3OfSpades(true);
                 break;
             }
         }

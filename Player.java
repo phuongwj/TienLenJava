@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Player {
     private ArrayList<String> cardsInHand;
-    private static Deck deck = new Deck();
     private static int playerIdCount;
     private int playerId;
     private boolean has3OfSpades;
@@ -42,12 +41,12 @@ public class Player {
     // Methods.
     
     // Method: Add shuffled deck to cards in hand.
-    public void addDeckShuffled(int i) {
+    public void addDeckShuffled(int i, Deck deck) {
         this.cardsInHand.add(deck.getDeckShuffled().get(i));
     }
 
     // Method: Sorting the cards low to high in Players' hand using Insertion Sort.
-    public void sortCards() {
+    public void sortCards(Deck deck) {
 
         // Loop through the Player's deck.
         for (int i = 1; i < this.cardsInHand.size(); i++) {
@@ -97,7 +96,7 @@ public class Player {
     }
 
     // Method: Call shuffle deck.
-    public static void shuffleDeck() {
+    public static void shuffleDeck(Deck deck) {
         deck.shuffleDeck();
     }
 
@@ -107,56 +106,64 @@ public class Player {
     }
 
     // Method: Deal card.
-    public void dealCard(String cardToBeDealt) {
+    public void dealCard(String cardToBeDealt, Deck deck) {
 
-        // Created two temporary variables that hold the real card value from the 52 card deck of the Player's deck.
-        int indexCardPlayed = 0;
-        int indexCardToBeDealt = 0;
-
-        // Initialized the card played on the table.
-        String cardPlayed = "";
-
-        // Set the card on the table to the string for comparisons. If it's just one card then first if, else if it's a whole sequence then get the last index only.
-        // if (deck.getCardsPlayed().size() < 1) {
-        //     cardPlayed = deck.getCardsPlayed().get(0);
-        // } else if (deck.getCardsPlayed().size() > 1) {
-        //     cardPlayed = deck.getCardsPlayed().get(deck.getCardsPlayed().size() - 1);
-        // }
-
-        cardPlayed = deck.getCardsPlayed().get(0);
-
-        // Get the real index value of the card on the table.
-        for (int m = 0; m < deck.getDeckCard().length; m++) {
-            if (cardPlayed.equals(deck.getDeckCard()[m])) {
-                indexCardPlayed = m;
-                break;
-            }
-        }
-
-        // Get the real index value of the card to be dealt.
-        for (int l = 0; l < deck.getDeckCard().length; l++) {
-            if (cardToBeDealt.equals(deck.getDeckCard()[l])) {
-                indexCardToBeDealt = l;
-                break;
-            }
-        }
-
-        // Compare the indexes of card on the table and card to be dealt to see which one is stronger.
-        if (indexCardToBeDealt > indexCardPlayed) {
-            deck.getCardsPlayed().set(0, cardToBeDealt);
+        if (deck.getCardsPlayed().isEmpty()) {
+            deck.getCardsPlayed().add(cardToBeDealt);
             this.getCardsInHand().remove(cardToBeDealt);
+            this.setHasDealtCard(true);
         } else {
-            System.out.println("Card in hand is smaller than card on table!");
+            // Created two temporary variables that hold the real card value from the 52 card deck of the Player's deck.
+            int indexCardPlayed = 0;
+            int indexCardToBeDealt = 0;
+
+            // Initialized the card played on the table.
+            String cardPlayed = "";
+
+            // Set the card on the table to the string for comparisons. If it's just one card then first if, else if it's a whole sequence then get the last index only.
+            // if (deck.getCardsPlayed().size() < 1) {
+            //     cardPlayed = deck.getCardsPlayed().get(0);
+            // } else if (deck.getCardsPlayed().size() > 1) {
+            //     cardPlayed = deck.getCardsPlayed().get(deck.getCardsPlayed().size() - 1);
+            // }
+
+            cardPlayed = deck.getCardsPlayed().get(0);
+
+            // Get the real index value of the card on the table.
+            for (int m = 0; m < deck.getDeckCard().length; m++) {
+                if (cardPlayed.equals(deck.getDeckCard()[m])) {
+                    indexCardPlayed = m;
+                    break;
+                }
+            }
+
+            // Get the real index value of the card to be dealt.
+            for (int l = 0; l < deck.getDeckCard().length; l++) {
+                if (cardToBeDealt.equals(deck.getDeckCard()[l])) {
+                    indexCardToBeDealt = l;
+                    break;
+                }
+            }
+
+            // Compare the indexes of card on the table and card to be dealt to see which one is stronger.
+            if (indexCardToBeDealt > indexCardPlayed) {
+                deck.getCardsPlayed().set(0, cardToBeDealt);
+                this.getCardsInHand().remove(cardToBeDealt);
+                this.setHasDealtCard(true);
+            } else {
+                System.out.println("Card in hand is smaller than card on table!");
+            }
         }
+        
     }
 
     // Method: Setting the has3OfSpades to true/false.
-    public void setHas3OfSpades(boolean sth) {
-        this.has3OfSpades = sth;
+    public void setHas3OfSpades(boolean trueOrFalse) {
+        this.has3OfSpades = trueOrFalse;
     }
 
     // Method: Setting the hasDealtCard to true/false.
-    public void setHasDealtCard(boolean sth) {
-        this.hasDealtCard = sth;
+    public void setHasDealtCard(boolean trueOrFalse) {
+        this.hasDealtCard = trueOrFalse;
     }
 }

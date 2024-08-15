@@ -51,7 +51,7 @@ public class Source {
         int rounds = 0;
         int totalNumOfPasses = 0;
 
-        // Players dealing their cards.
+        // Players dealing their cards. send help jul
         while ( !(deck.gameHasEnded(players)) ) {
             if (rounds < 1) {
                 for (int i = 0; i < players.size(); i++) {

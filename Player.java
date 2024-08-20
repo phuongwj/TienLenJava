@@ -6,6 +6,7 @@ public class Player {
     private int playerId;
     private boolean has3OfSpades;
     private boolean hasDealtCard;
+    private boolean cardDealtIsSmaller;
 
     // Constructors.
     public Player() {
@@ -14,6 +15,7 @@ public class Player {
         this.playerId = 0;
         this.has3OfSpades = false;
         this.hasDealtCard = false;
+        this.cardDealtIsSmaller = false;
     }
 
     // Getters.
@@ -36,6 +38,11 @@ public class Player {
     // Get whether if player has dealt card.
     public boolean hasDealtCard() {
         return this.hasDealtCard;
+    }
+
+    // Get whether if card is valid or not.
+    public boolean validCard() {
+        return this.cardDealtIsSmaller;
     }
 
     // Methods.
@@ -150,8 +157,13 @@ public class Player {
                 deck.getCardsPlayed().set(0, cardToBeDealt);
                 this.getCardsInHand().remove(cardToBeDealt);
                 this.setHasDealtCard(true);
-            } else {
-                System.out.println("Card in hand is smaller than card on table!");
+                this.cardDealtIsSmaller = false;
+            } else if (indexCardToBeDealt < indexCardPlayed) {
+                System.out.println("Card in hand is smaller than card on table! Please deal another card or pass your turn." + "\n");
+                this.cardDealtIsSmaller = true;
+            } else if ( !(this.getCardsInHand().contains(cardToBeDealt)) ) {
+                System.out.println("Card doesn't exist in your hand. Please choose the card that you have. " + "\n");
+                this.cardDealtIsSmaller = true;
             }
         }
         

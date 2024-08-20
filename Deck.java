@@ -74,8 +74,8 @@ public class Deck {
         }
     }
 
-    // Method: Printing cards.
-    public void printCardsInHand(ArrayList<Player> players) {
+    // Method: Printing cards in hand for all players.
+    public void printCardsInHandAll(ArrayList<Player> players) {
         for (int m = 0; m < players.size(); m++) {
             System.out.println("- Player " + players.get(m).getPlayerId() + "\n");
             for (int j = 0; j < players.get(m).getCardsInHand().size(); j++) {
@@ -83,6 +83,14 @@ public class Deck {
             }
             System.out.println("-------------" + "\n");
         }
+    }
+
+    public void printCardsInHand(Player player) {
+        System.out.println("- Player " + player.getPlayerId() + "\n");
+        for (int l = 0; l < player.getCardsInHand().size(); l++) {
+            System.out.println(player.getCardsInHand().get(l));
+        }
+        System.out.println("-------------" + "\n");
     }
 
     // Method: Printing cards played.
@@ -107,7 +115,7 @@ public class Deck {
     
     // Method: Check if game has finished.
     public boolean gameHasEnded(ArrayList<Player> players) {
-        if (playerFinishCounter == 3) {
+        if (this.playerFinishCounter == 3) {
             this.gameHasEnded = true;
         } 
         for (int i = 0; i < players.size(); i++) {

@@ -73,11 +73,21 @@ public class Source {
                         System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
                         continue;
                     } else {
+
                         players.get(i).dealCard(deal, deck);
-                        while (players.get(i).validCard()) {
+
+                        while (players.get(i).invalidCard()) {
                             deal = in.nextLine();
                             players.get(i).dealCard(deal, deck);
+
+                            if (deal.equals("Pass")) {
+                                players.get(i).setHasDealtCard(false);
+                                System.out.println("Player " + players.get(i).getPlayerId() + " has passed their turn.");
+                                System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
+                                break;
+                            }
                         }
+
                         System.out.println("Player " + players.get(i).getPlayerId() + " has dealt " + deal + ".");
                         System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
                         continue;
@@ -101,11 +111,21 @@ public class Source {
                             System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
                             continue;
                         } else {
+
                             players.get(i).dealCard(deal, deck);
-                            while (players.get(i).validCard()) {
+
+                            while (players.get(i).invalidCard()) {
                                 deal = in.nextLine();
                                 players.get(i).dealCard(deal, deck);
+
+                                if (deal.equals("Pass")) {
+                                    players.get(i).setHasDealtCard(false);
+                                    System.out.println("Player " + players.get(i).getPlayerId() + " has passed their turn.");
+                                    System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
+                                    break;
+                                }
                             }
+
                             System.out.println("Player " + players.get(i).getPlayerId() + " has dealt " + deal + ".");
                             System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
                             continue;

@@ -41,7 +41,7 @@ public class Player {
     }
 
     // Get whether if card is valid or not.
-    public boolean validCard() {
+    public boolean invalidCard() {
         return this.cardDealtIsSmaller;
     }
 
@@ -161,12 +161,8 @@ public class Player {
             } else if (indexCardToBeDealt < indexCardPlayed) {
                 System.out.println("Card in hand is smaller than card on table! Please deal another card or pass your turn." + "\n");
                 this.cardDealtIsSmaller = true;
-            } else if ( !(this.getCardsInHand().contains(cardToBeDealt)) ) {
-                System.out.println("Card doesn't exist in your hand. Please choose the card that you have. " + "\n");
-                this.cardDealtIsSmaller = true;
             }
         }
-        
     }
 
     // Method: Setting the has3OfSpades to true/false.

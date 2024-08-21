@@ -152,6 +152,14 @@ public class Player {
                 }
             }
 
+            // If card dealt isn't in hand then let player deal again. 
+            if (this.getCardsInHand().contains(cardToBeDealt)) {
+                this.cardDealtIsSmaller = false;
+            } else {
+                System.out.println("Sorry, you don't have that card in your hand, please deal another one.");
+                this.cardDealtIsSmaller = true;
+            }
+
             // Compare the indexes of card on the table and card to be dealt to see which one is stronger.
             if (indexCardToBeDealt > indexCardPlayed) {
                 deck.getCardsPlayed().set(0, cardToBeDealt);

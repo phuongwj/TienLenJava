@@ -110,7 +110,6 @@ public class Deck {
                 break;
             }
         }
-        this.turnManager.rotateTurns(this.indexThreeOfSpades, players);
     }
     
     // Method: Check if game has finished.
@@ -125,5 +124,12 @@ public class Deck {
             }
         }
         return this.gameHasEnded;
+    }
+
+    // Method: Clear cards on the table.
+    public void clearCardsPlayed() {
+        for (int i = 0; i < this.cardsPlayed.size(); i++) {
+            this.cardsPlayed.remove(i);
+        }
     }
 }

@@ -10,6 +10,9 @@ public class Source {
         // New deck initialization.
         Deck deck = new Deck();
 
+        // Turn manager initialization.
+        RoundAndRound turnManager = new RoundAndRound();
+
         // An array of Players.
         ArrayList<Player> players = new ArrayList<>(4);
 
@@ -40,6 +43,7 @@ public class Source {
         // Find 3 of Spades.
         System.out.println("Find 3 of Spades:" + "\n");
         deck.findThreeOfSpades(players);
+        turnManager.rotateTurns(deck.getIndexThreeOfSpades(), players);
         System.out.println("Player " + (deck.getIndexThreeOfSpades() + 1) + " has 3 of Spades, so they get to deal card first.");
 
         // Players cards in hand after 3 of Spades.
@@ -47,6 +51,7 @@ public class Source {
 
         String deal = "";
         int rounds = 0;
+        int totalNumOfPasses = 0;
 
         while ( !(deck.gameHasEnded(players)) ) {
 
@@ -63,17 +68,24 @@ public class Source {
                         continue;
                     }
 
+                    // If player's cards in hand is empty.
+                    if (players.get(i).getCardsInHand().isEmpty()) {
+                        players.remove(i);
+                        continue;
+                    }
+
                     System.out.println("Player " + players.get(i).getPlayerId() + " please either insert \"Pass\" to pass your turn or insert a card from your hand to deal it. " + "\n" + "Here are your cards in hand." + "\n");
                     deck.printCardsInHand(players.get(i));
                     deal = in.nextLine();
 
                     if (deal.equals("Pass")) {
+                        totalNumOfPasses++;
                         players.get(i).setHasDealtCard(false);
                         System.out.println("Player " + players.get(i).getPlayerId() + " has passed their turn.");
                         System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
                         continue;
                     } else {
-
+                        
                         players.get(i).dealCard(deal, deck);
 
                         while (players.get(i).invalidCard()) {
@@ -81,6 +93,7 @@ public class Source {
                             players.get(i).dealCard(deal, deck);
 
                             if (deal.equals("Pass")) {
+                                totalNumOfPasses++;
                                 players.get(i).setHasDealtCard(false);
                                 System.out.println("Player " + players.get(i).getPlayerId() + " has passed their turn.");
                                 System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
@@ -93,8 +106,30 @@ public class Source {
                         continue;
                     }
                 }
-                rounds++;
             } 
+
+            // If atleast 3 players have "Pass" their turns, then let the player that 
+            // recently dealt be first to deal their cards for the next round.
+            if (totalNumOfPasses > 2) {
+
+                System.out.println("Since there have been 3 players that decided to \"Pass\" their turns, so a new round will start.");
+                System.out.println("Cards on the table will also be removed.");
+                deck.clearCardsPlayed();
+                rounds = 0;
+
+                for (int i = 0; i < players.size(); i++) {
+                    if (players.get(i).hasDealtCard()) {
+                        System.out.println("Player " + players.get(i).getPlayerId() + " is the Player that dealt their card most recent, so they will get to be the first to deal any cards in their hand. " + "\n");
+                        turnManager.rotateTurns(i, players);
+                        break;
+                    }
+                }
+
+                totalNumOfPasses = 0;
+
+            } else {
+                rounds++;
+            }
 
             if (rounds >= 1) {
 
@@ -106,6 +141,7 @@ public class Source {
                         deal = in.nextLine();
 
                         if (deal.equals("Pass")) {
+                            totalNumOfPasses++;
                             players.get(i).setHasDealtCard(false);
                             System.out.println("Player " + players.get(i).getPlayerId() + " has passed their turn.");
                             System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
@@ -119,6 +155,7 @@ public class Source {
                                 players.get(i).dealCard(deal, deck);
 
                                 if (deal.equals("Pass")) {
+                                    totalNumOfPasses++;
                                     players.get(i).setHasDealtCard(false);
                                     System.out.println("Player " + players.get(i).getPlayerId() + " has passed their turn.");
                                     System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
@@ -135,72 +172,6 @@ public class Source {
             }
         }
     }
-
-    // String option = "";
-        // String cardToBeDealt = "";
-        // int rounds = 0;
-        // int totalNumOfPasses = 0;
-
-        // // Players dealing their cards. send help jul
-        // while ( !(deck.gameHasEnded(players)) ) {
-        //     if (rounds < 1) {
-        //         for (int i = 0; i < players.size(); i++) {
-        //             if (players.get(i).getCardsInHand().contains("3 of Spades")) {
-        //                 System.out.println("Player " + players.get(i).getPlayerId() + " has 3 of Spades, so they get to go first.");
-        //                 players.get(i).dealCard("3 of Spades", deck);
-        //                 System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
-        //                 deck.printCardsInHand(players);
-        //                 continue;
-        //             }
-        //             System.out.println("Player " + players.get(i).getPlayerId() + ", enter either Pass to pass your turn or Deal to deal your card.");
-        //             option = in.next();
-        //             if (option.equals("Pass")) {
-        //                 players.get(i).setHasDealtCard(false);
-        //                 totalNumOfPasses++;
-        //                 continue;
-        //             } else if (option.equals("Deal")) {
-        //                 System.out.println("Player " + players.get(i).getPlayerId() + " please enter the card you desire to play.");
-        //                 cardToBeDealt = in.next();
-        //                 players.get(i).dealCard(cardToBeDealt, deck);
-        //                 System.out.println("Cards on the table: " + deck.getCardsPlayed());
-        //                 deck.printCardsInHand(players);
-        //             }
-        //         }
-        //         rounds++;
-        //         if (totalNumOfPasses == 3) {
-        //             for (int i = 0; i < players.size(); i++) {
-        //                 players.get(i).setHasDealtCard(false);
-        //             }
-        //             rounds = 0;
-        //             totalNumOfPasses = 0;
-        //         }
-        //     } else if (rounds >= 1) {
-        //         for (int i = 0; i < players.size(); i++) {
-        //             if (players.get(i).hasDealtCard()) {
-        //                 System.out.println("Player " + players.get(i).getPlayerId() + ", enter either Pass to pass your turn or Deal to deal your card.");
-        //                 option = in.next();
-        //                 if (option.equals("Pass")) {
-        //                     players.get(i).setHasDealtCard(false);
-        //                     totalNumOfPasses++;
-        //                     continue;
-        //                 } else if (option.equals("Deal")) {
-        //                     System.out.println("Player " + players.get(i).getPlayerId() + " please enter the card you desire to play.");
-        //                     cardToBeDealt = in.next();
-        //                     players.get(i).dealCard(cardToBeDealt, deck);
-        //                     System.out.println("Cards on the table: " + deck.getCardsPlayed());
-        //                     deck.printCardsInHand(players);
-        //                 }
-        //             }
-        //         }
-        //         rounds++;
-        //         if (totalNumOfPasses == 3) {
-        //             for (int i = 0; i < players.size(); i++) {
-        //                 players.get(i).setHasDealtCard(false);
-        //             }
-        //             rounds = 0;
-        //         }
-        //     }
-        // }
 
     // So say we call the findThreeOfSpades method. That method will only find 3 of Spades, in order to re-order the array list to determine who's going first. 
     // Start the inner for loop: 

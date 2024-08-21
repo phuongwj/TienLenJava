@@ -127,13 +127,6 @@ public class Player {
             // Initialized the card played on the table.
             String cardPlayed = "";
 
-            // Set the card on the table to the string for comparisons. If it's just one card then first if, else if it's a whole sequence then get the last index only.
-            // if (deck.getCardsPlayed().size() < 1) {
-            //     cardPlayed = deck.getCardsPlayed().get(0);
-            // } else if (deck.getCardsPlayed().size() > 1) {
-            //     cardPlayed = deck.getCardsPlayed().get(deck.getCardsPlayed().size() - 1);
-            // }
-
             cardPlayed = deck.getCardsPlayed().get(0);
 
             // Get the real index value of the card on the table.

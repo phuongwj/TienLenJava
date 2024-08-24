@@ -173,6 +173,10 @@ public class Source {
         }
     }
 
+
+    // Brainstorm a way to keep count of "Pass" and exits the for loop right away when the count immediately reaches 3. So that whenever we "Pass", the game won't continue.
+    // If we do "continue" for passing, we won't be able to grab the correct player that has just recently played. Maybe just have one
+
     // So say we call the findThreeOfSpades method. That method will only find 3 of Spades, in order to re-order the array list to determine who's going first. 
     // Start the inner for loop: 
     // The first if condition will be that to check if player at index 0 has 3 of Spades, which ideally should because we pushed it to the array list already.

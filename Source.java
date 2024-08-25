@@ -106,30 +106,32 @@ public class Source {
                         continue;
                     }
                 }
+
+                // If atleast 3 players have "Pass" their turns, then let the player that 
+                // recently dealt be first to deal their cards for the next round.
+                if (totalNumOfPasses > 2) {
+
+                    System.out.println("Since there have been 3 players that decided to \"Pass\" their turns, so a new round will start.");
+                    System.out.println("Cards on the table will also be removed.");
+                    deck.clearCardsPlayed();
+                    rounds = 0;
+
+                    for (int i = 0; i < players.size(); i++) {
+                        if (players.get(i).hasDealtCard()) {
+                            System.out.println("Player " + players.get(i).getPlayerId() + " is the Player that dealt their card most recent, so they will get to be the first to deal any cards in their hand. " + "\n");
+                            turnManager.rotateTurns(i, players);
+                            break;
+                        }
+                    }
+
+                    totalNumOfPasses = 0;
+
+                } else {
+                    rounds++;
+                }
             } 
 
-            // If atleast 3 players have "Pass" their turns, then let the player that 
-            // recently dealt be first to deal their cards for the next round.
-            if (totalNumOfPasses > 2) {
-
-                System.out.println("Since there have been 3 players that decided to \"Pass\" their turns, so a new round will start.");
-                System.out.println("Cards on the table will also be removed.");
-                deck.clearCardsPlayed();
-                rounds = 0;
-
-                for (int i = 0; i < players.size(); i++) {
-                    if (players.get(i).hasDealtCard()) {
-                        System.out.println("Player " + players.get(i).getPlayerId() + " is the Player that dealt their card most recent, so they will get to be the first to deal any cards in their hand. " + "\n");
-                        turnManager.rotateTurns(i, players);
-                        break;
-                    }
-                }
-
-                totalNumOfPasses = 0;
-
-            } else {
-                rounds++;
-            }
+            
 
             if (rounds >= 1) {
 
@@ -168,6 +170,29 @@ public class Source {
                             continue;
                         }
                     }
+                }
+                
+                // If atleast 3 players have "Pass" their turns, then let the player that 
+                // recently dealt be first to deal their cards for the next round.
+                if (totalNumOfPasses > 2) {
+
+                    System.out.println("Since there have been 3 players that decided to \"Pass\" their turns, so a new round will start.");
+                    System.out.println("Cards on the table will also be removed.");
+                    deck.clearCardsPlayed();
+                    rounds = 0;
+
+                    for (int i = 0; i < players.size(); i++) {
+                        if (players.get(i).hasDealtCard()) {
+                            System.out.println("Player " + players.get(i).getPlayerId() + " is the Player that dealt their card most recent, so they will get to be the first to deal any cards in their hand. " + "\n");
+                            turnManager.rotateTurns(i, players);
+                            break;
+                        }
+                    }
+
+                    totalNumOfPasses = 0;
+
+                } else {
+                    rounds++;
                 }
             }
         }

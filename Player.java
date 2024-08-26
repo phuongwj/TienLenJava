@@ -194,6 +194,7 @@ public class Player {
 
                     deck.getCardsPlayed().clear();
                     for (String i : cardToBeDealt.split(", ")) {
+                        System.out.println("method is executed");
                         deck.getCardsPlayed().add(i);
                         this.getCardsInHand().remove(i);
                     }

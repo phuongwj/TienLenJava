@@ -131,8 +131,6 @@ public class Source {
                 }
             } 
 
-            
-
             if (rounds >= 1) {
 
                 for (int i = 0; i < players.size(); i++) {
@@ -171,7 +169,7 @@ public class Source {
                         }
                     }
                 }
-                
+
                 // If atleast 3 players have "Pass" their turns, then let the player that 
                 // recently dealt be first to deal their cards for the next round.
                 if (totalNumOfPasses > 2) {

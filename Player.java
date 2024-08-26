@@ -6,7 +6,7 @@ public class Player {
     private int playerId;
     private boolean has3OfSpades;
     private boolean hasDealtCard;
-    private boolean cardDealtIsSmaller;
+    private boolean cardDealtInvalid;
 
     // Constructors.
     public Player() {
@@ -15,7 +15,7 @@ public class Player {
         this.playerId = 0;
         this.has3OfSpades = false;
         this.hasDealtCard = false;
-        this.cardDealtIsSmaller = false;
+        this.cardDealtInvalid = false;
     }
 
     // Getters.
@@ -42,7 +42,7 @@ public class Player {
 
     // Get whether if card is valid or not.
     public boolean invalidCard() {
-        return this.cardDealtIsSmaller;
+        return this.cardDealtInvalid;
     }
 
     // Methods.
@@ -120,6 +120,15 @@ public class Player {
             this.getCardsInHand().remove(cardToBeDealt);
             this.setHasDealtCard(true);
         } else {
+            
+            // Check if the sequence of the cards to be dealt has the same length as cards played.
+            if (deck.getCardsPlayed().size() != cardToBeDealt.split(", ").length) {
+                System.out.println("Please deal a sequence that has the same size as the sequence on the table or pass your turn." + "\n");
+                cardDealtInvalid = true;
+            } else {
+                cardDealtInvalid = false;
+            }
+
             // Created two temporary variables that hold the real card value from the 52 card deck of the Player's deck.
             int indexCardPlayed = 0;
             int indexCardToBeDealt = 0;
@@ -127,6 +136,11 @@ public class Player {
             // Initialized the card played on the table.
             String cardPlayed = "";
 
+            // If cardToBeDealt is a sequence
+            if (cardToBeDealt.split(", ").length > 1) {
+                int sequenceSize = cardToBeDealt.split(", ").length;
+                cardToBeDealt = cardToBeDealt.split(", ")[sequenceSize-1];
+            } 
             cardPlayed = deck.getCardsPlayed().get(0);
 
             // Get the real index value of the card on the table.
@@ -147,10 +161,10 @@ public class Player {
 
             // If card dealt isn't in hand then let player deal again. 
             if (this.getCardsInHand().contains(cardToBeDealt)) {
-                this.cardDealtIsSmaller = false;
+                this.cardDealtInvalid = false;
             } else {
                 System.out.println("Sorry, you don't have that card in your hand, please deal another one.");
-                this.cardDealtIsSmaller = true;
+                this.cardDealtInvalid = true;
             }
 
             // Compare the indexes of card on the table and card to be dealt to see which one is stronger.
@@ -158,10 +172,10 @@ public class Player {
                 deck.getCardsPlayed().set(0, cardToBeDealt);
                 this.getCardsInHand().remove(cardToBeDealt);
                 this.setHasDealtCard(true);
-                this.cardDealtIsSmaller = false;
+                this.cardDealtInvalid = false;
             } else if (indexCardToBeDealt < indexCardPlayed) {
                 System.out.println("Card in hand is smaller than card on table! Please deal another card or pass your turn." + "\n");
-                this.cardDealtIsSmaller = true;
+                this.cardDealtInvalid = true;
             }
         }
     }

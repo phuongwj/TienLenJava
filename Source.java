@@ -196,6 +196,11 @@ public class Source {
         }
     }
 
+    // Turn what's inside the if block into a method. So that we can call it inside the "Pass" if block so it's way shorter. So inside that if "Pass" block, we're gonna be 
+    // calling a method as well to check for the totalNumOfPasses and do anything that's necessary. For the rounds++, do it outside the for loop (the rounds < 1 for loop).
+    // Outside that for loop, we're gonna check if it's a continuous round, if it's not a continuous round then the if condition won't be terminated for rounds to be ++.
+    // We're gonna have a boolean to determine if it's a continuous round or not, by setting boolean false/true at when the totalNumOfPasses > 2 or something like that.
+
 
     // Brainstorm a way to keep count of "Pass" and exits the for loop right away when the count immediately reaches 3. So that whenever we "Pass", the game won't continue.
     // If we do "continue" for passing, we won't be able to grab the correct player that has just recently played. Maybe just have one

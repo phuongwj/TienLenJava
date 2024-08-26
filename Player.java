@@ -115,14 +115,34 @@ public class Player {
     // Method: Deal card.
     public void dealCard(String cardToBeDealt, Deck deck) {
 
+        // Set up sequence size to use throughout the method.
+        int sequenceToBeDealtSize = 0;
+        if (cardToBeDealt.split(", ").length > 1) {
+            sequenceToBeDealtSize = cardToBeDealt.split(", ").length;
+        }
+
+        // If deck is empty.
         if (deck.getCardsPlayed().isEmpty()) {
-            deck.getCardsPlayed().add(cardToBeDealt);
-            this.getCardsInHand().remove(cardToBeDealt);
-            this.setHasDealtCard(true);
+
+            // Check if it's a sequence of cards.
+            if (sequenceToBeDealtSize > 1) {
+
+                for (String i : cardToBeDealt.split(", ")) {
+                    deck.getCardsPlayed().add(i);
+                    this.getCardsInHand().remove(i);
+                }
+                this.setHasDealtCard(true);
+
+            } else {
+                deck.getCardsPlayed().add(cardToBeDealt);
+                this.getCardsInHand().remove(cardToBeDealt);
+                this.setHasDealtCard(true);
+            }
+
         } else {
-            
+
             // Check if the sequence of the cards to be dealt has the same length as cards played.
-            if (deck.getCardsPlayed().size() != cardToBeDealt.split(", ").length) {
+            if (deck.getCardsPlayed().size() != sequenceToBeDealtSize) {
                 System.out.println("Please deal a sequence that has the same size as the sequence on the table or pass your turn." + "\n");
                 cardDealtInvalid = true;
             } else {
@@ -137,9 +157,8 @@ public class Player {
             String cardPlayed = "";
 
             // If cardToBeDealt is a sequence
-            if (cardToBeDealt.split(", ").length > 1) {
-                int sequenceSize = cardToBeDealt.split(", ").length;
-                cardToBeDealt = cardToBeDealt.split(", ")[sequenceSize-1];
+            if (sequenceToBeDealtSize > 1) {
+                cardToBeDealt = cardToBeDealt.split(", ")[sequenceToBeDealtSize-1];
             } 
             cardPlayed = deck.getCardsPlayed().get(0);
 
@@ -169,10 +188,24 @@ public class Player {
 
             // Compare the indexes of card on the table and card to be dealt to see which one is stronger.
             if (indexCardToBeDealt > indexCardPlayed) {
-                deck.getCardsPlayed().set(0, cardToBeDealt);
-                this.getCardsInHand().remove(cardToBeDealt);
-                this.setHasDealtCard(true);
-                this.cardDealtInvalid = false;
+
+                // Check if it's a sequence of cards.
+                if (sequenceToBeDealtSize > 1) {
+
+                    deck.getCardsPlayed().clear();
+                    for (String i : cardToBeDealt.split(", ")) {
+                        deck.getCardsPlayed().add(i);
+                        this.getCardsInHand().remove(i);
+                    }
+                    this.setHasDealtCard(true);
+                    this.cardDealtInvalid = false;
+
+                } else {
+                    deck.getCardsPlayed().set(0, cardToBeDealt);
+                    this.getCardsInHand().remove(cardToBeDealt);
+                    this.setHasDealtCard(true);
+                    this.cardDealtInvalid = false;
+                }
             } else if (indexCardToBeDealt < indexCardPlayed) {
                 System.out.println("Card in hand is smaller than card on table! Please deal another card or pass your turn." + "\n");
                 this.cardDealtInvalid = true;

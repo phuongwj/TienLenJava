@@ -10,10 +10,16 @@ public class Test {
         // System.out.println(Arrays.toString(haha));
         String[] hehe = {"a", "b", "c", "d"};
 
+        int counter = 0;
         for (int i = 0; i < hehe.length; i++) {
             System.out.println(hehe[i]);
-            if (i == 3) {
-                i = 0;
+            counter++;
+            if (counter == 4) {
+                System.out.println();
+                if (i == 3) {
+                    System.out.println("Turned i into 0");
+                    i = 0;
+                }
             }
         }
     }

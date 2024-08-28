@@ -84,7 +84,26 @@ public class Source {
                         players.get(i).setHasDealtCard(false);
                         System.out.println("Player " + players.get(i).getPlayerId() + " has passed their turn.");
                         System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
-                        continue;
+
+                        // If three players skip their turns, the player who last dealt a card is given the opportunity to start the next round.
+                        if (totalNumOfPasses > 2) {
+
+                            System.out.println("Since there have been 3 players that decided to \"Pass\" their turns, so a new round will start.");
+                            System.out.println("Cards on the table will also be removed.");
+                            deck.clearCardsPlayed();
+                            rounds = 0;
+
+                            for (int m = 0; m < players.size(); m++) {
+                                if (players.get(m).hasDealtCard()) {
+                                    System.out.println("Player " + players.get(m).getPlayerId() + " last dealt their card, so they will be first to start the next round.");
+                                    turnManager.rotateTurns(m, players);
+                                    i = 0;
+                                    break;
+                                }
+                            }
+                        } else {
+                            continue;
+                        }
 
                     } else {
                         
@@ -99,7 +118,26 @@ public class Source {
                                 players.get(i).setHasDealtCard(false);
                                 System.out.println("Player " + players.get(i).getPlayerId() + " has passed their turn.");
                                 System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
-                                break;
+
+                                // If three players skip their turns, the player who last dealt a card is given the opportunity to start the next round.
+                                if (totalNumOfPasses > 2) {
+
+                                    System.out.println("Since there have been 3 players that decided to \"Pass\" their turns, so a new round will start.");
+                                    System.out.println("Cards on the table will also be removed.");
+                                    deck.clearCardsPlayed();
+                                    rounds = 0;
+
+                                    for (int m = 0; m < players.size(); m++) {
+                                        if (players.get(m).hasDealtCard()) {
+                                            System.out.println("Player " + players.get(m).getPlayerId() + " last dealt their card, so they will be first to start the next round.");
+                                            turnManager.rotateTurns(m, players);
+                                            i = 0;
+                                            break;
+                                        }
+                                    }
+                                } else {
+                                    break;
+                                }
                             }
                         }
 
@@ -108,6 +146,8 @@ public class Source {
                         continue;
                     }
                 }
+
+                rounds++;
             } 
 
             if (rounds >= 1) {
@@ -125,7 +165,26 @@ public class Source {
                             players.get(i).setHasDealtCard(false);
                             System.out.println("Player " + players.get(i).getPlayerId() + " has passed their turn.");
                             System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
-                            continue;
+                            
+                            // If three players skip their turns, the player who last dealt a card is given the opportunity to start the next round.
+                            if (totalNumOfPasses > 2) {
+
+                                System.out.println("Since there have been 3 players that decided to \"Pass\" their turns, so a new round will start.");
+                                System.out.println("Cards on the table will also be removed.");
+                                deck.clearCardsPlayed();
+                                rounds = 0;
+
+                                for (int m = 0; m < players.size(); m++) {
+                                    if (players.get(m).hasDealtCard()) {
+                                        System.out.println("Player " + players.get(m).getPlayerId() + " last dealt their card, so they will be first to start the next round.");
+                                        turnManager.rotateTurns(m, players);
+                                        i = 0;
+                                        break;
+                                    }
+                                }
+                            } else {
+                                continue;
+                            }
 
                         } else {
 
@@ -140,7 +199,27 @@ public class Source {
                                     players.get(i).setHasDealtCard(false);
                                     System.out.println("Player " + players.get(i).getPlayerId() + " has passed their turn.");
                                     System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
-                                    break;
+                                    
+                                    // If three players skip their turns, the player who last dealt a card is given the opportunity to start the next round.
+                                    if (totalNumOfPasses > 2) {
+
+                                        System.out.println("Since there have been 3 players that decided to \"Pass\" their turns, so a new round will start.");
+                                        System.out.println("Cards on the table will also be removed.");
+                                        deck.clearCardsPlayed();
+                                        rounds = 0;
+
+                                        for (int m = 0; m < players.size(); m++) {
+                                            if (players.get(m).hasDealtCard()) {
+                                                System.out.println("Player " + players.get(m).getPlayerId() + " last dealt their card, so they will be first to start the next round.");
+                                                turnManager.rotateTurns(m, players);
+                                                i = 0;
+                                                break;
+                                            }
+                                        }
+                                        
+                                    } else {
+                                        break;
+                                    }
                                 }
                             }
 
@@ -150,6 +229,8 @@ public class Source {
                         }
                     }
                 }
+
+                rounds++;
             }
         }
     }

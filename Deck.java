@@ -5,7 +5,6 @@ public class Deck {
     private ArrayList<String> deckShuffled;
     private ArrayList<String> cardsPlayed;
     private int indexThreeOfSpades;
-    private RoundAndRound turnManager;
     private int playerFinishCounter;
     private boolean gameHasEnded;
 
@@ -29,7 +28,6 @@ public class Deck {
         this.deckShuffled = new ArrayList<>();
         this.cardsPlayed = new ArrayList<>();
         this.indexThreeOfSpades = 0;
-        this.turnManager = new RoundAndRound();
         this.playerFinishCounter = 0;
         this.gameHasEnded = false;
     }

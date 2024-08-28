@@ -115,7 +115,7 @@ public class Player {
     // Method: Deal card.
     public void dealCard(String cardToBeDealt, Deck deck) {
 
-        // If deck is empty.
+        // If table is empty.
         if (deck.getCardsPlayed().isEmpty()) {
             deck.getCardsPlayed().add(cardToBeDealt);
             this.getCardsInHand().remove(cardToBeDealt);

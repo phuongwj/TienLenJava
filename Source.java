@@ -69,10 +69,10 @@ public class Source {
                     }
 
                     // If player's cards in hand is empty.
-                    if (players.get(i).getCardsInHand().isEmpty()) {
-                        players.remove(i);
-                        continue;
-                    }
+                    // if (players.get(i).getCardsInHand().isEmpty()) {
+                    //     players.remove(i);
+                    //     continue;
+                    // }
 
                     // Deal or Pass.
                     System.out.println("Player " + players.get(i).getPlayerId() + " please either insert \"Pass\" to pass your turn or insert a card from your hand to deal it. " + "\n" + "Here are your cards in hand." + "\n");

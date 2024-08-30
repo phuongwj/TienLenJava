@@ -128,6 +128,7 @@ public class Player {
             // Initialized the card played on the table.
             String cardPlayed = "";
 
+            // If it's just one card, not a sequence
             cardPlayed = deck.getCardsPlayed().get(0);
 
             // Get the real index value of the card on the table.
@@ -148,8 +149,9 @@ public class Player {
 
             // If card dealt isn't in hand then let player deal again. 
             if (this.getCardsInHand().contains(cardToBeDealt)) {
+                System.out.println("Do you ever go to false");
                 this.cardDealtInvalid = false;
-            } else {
+            } else if ( !(this.getCardsInHand().contains(cardToBeDealt)) ){
                 System.out.println("Sorry, you don't have that card in your hand, please deal another one.");
                 this.cardDealtInvalid = true;
             }
@@ -175,5 +177,10 @@ public class Player {
     // Method: Setting the hasDealtCard to true/false.
     public void setHasDealtCard(boolean trueOrFalse) {
         this.hasDealtCard = trueOrFalse;
+    }
+
+    // Method: Setting the invalidCard to true/false.
+    public void setInvalidCard(boolean trueOrFalse) {
+        this.cardDealtInvalid = trueOrFalse;
     }
 }

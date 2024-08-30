@@ -8,19 +8,31 @@ public class Test {
         
         // System.out.println(something.split(", ")[2]);
         // System.out.println(Arrays.toString(haha));
-        String[] hehe = {"a", "b", "c", "d"};
+        // String[] hehe = {"a", "b", "c", "d"};
+
+        // int counter = 0;
+        // for (int i = 0; i < hehe.length; i++) {
+        //     System.out.println(hehe[i]);
+        //     counter++;
+        //     if (counter == 4) {
+        //         System.out.println();
+        //         if (i == 3) {
+        //             System.out.println("Turned i into 0");
+        //             i = 0;
+        //         }
+        //     }
+        // }
 
         int counter = 0;
-        for (int i = 0; i < hehe.length; i++) {
-            System.out.println(hehe[i]);
-            counter++;
-            if (counter == 4) {
-                System.out.println();
-                if (i == 3) {
-                    System.out.println("Turned i into 0");
-                    i = 0;
-                }
+        while (counter < 7) {
+            if (counter == 1) {
+                System.out.println("Hiiiiii");
+            } else if (counter >= 1) {
+                System.out.println("lol");
+            } else if (counter >= 3) {
+                System.out.println("yes");
             }
+            counter++;
         }
     }
 }

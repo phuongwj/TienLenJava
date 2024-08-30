@@ -68,12 +68,6 @@ public class Source {
                         continue;
                     }
 
-                    // If player's cards in hand is empty.
-                    // if (players.get(i).getCardsInHand().isEmpty()) {
-                    //     players.remove(i);
-                    //     continue;
-                    // }
-
                     // Deal or Pass.
                     System.out.println("Player " + players.get(i).getPlayerId() + " please either insert \"Pass\" to pass your turn or insert a card from your hand to deal it. " + "\n" + "Here are your cards in hand." + "\n");
                     deck.printCardsInHand(players.get(i));
@@ -113,42 +107,49 @@ public class Source {
 
                         while (players.get(i).invalidCard()) {
                             deal = in.nextLine();
+                            players.get(i).dealCard(deal, deck);
 
-                            if (deal.equals("Pass")) {
-                                totalNumOfPasses++;
-                                players.get(i).setHasDealtCard(false);
-                                System.out.println("Player " + players.get(i).getPlayerId() + " has passed their turn.");
-                                System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
+                            if ( !(players.get(i).invalidCard()) ){
 
-                                // If three players skip their turns, the player who last dealt a card is given the opportunity to start the next round.
-                                if (totalNumOfPasses == players.size() - 1) {
+                                players.get(i).setInvalidCard(false);
 
-                                    System.out.println("Since there have been 3 players that decided to \"Pass\" their turns, so a new round will start.");
-                                    System.out.println("Cards on the table will also be removed.");
-                                    deck.clearCardsPlayed();
-                                    rounds = 0;
+                                if (deal.equals("Pass")) {
+                                    totalNumOfPasses++;
+                                    players.get(i).setHasDealtCard(false);
+                                    System.out.println("Player " + players.get(i).getPlayerId() + " has passed their turn.");
+                                    System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
 
-                                    for (int m = 0; m < players.size(); m++) {
-                                        if (players.get(m).hasDealtCard()) {
-                                            System.out.println("Player " + players.get(m).getPlayerId() + " last dealt their card, so they will be first to start the next round.");
-                                            turnManager.rotateTurns(m, players);
-                                            i = -1;
-                                            break;
+                                    // If three players skip their turns, the player who last dealt a card is given the opportunity to start the next round.
+                                    if (totalNumOfPasses == players.size() - 1) {
+
+                                        System.out.println("Since there have been 3 players that decided to \"Pass\" their turns, so a new round will start.");
+                                        System.out.println("Cards on the table will also be removed.");
+                                        deck.clearCardsPlayed();
+                                        rounds = 0;
+
+                                        for (int m = 0; m < players.size(); m++) {
+                                            if (players.get(m).hasDealtCard()) {
+                                                System.out.println("Player " + players.get(m).getPlayerId() + " last dealt their card, so they will be first to start the next round.");
+                                                turnManager.rotateTurns(m, players);
+                                                i = -1;
+                                                break;
+                                            }
                                         }
+
+                                        totalNumOfPasses = 0;
+
+                                    } else {
+                                        break;
                                     }
 
-                                    totalNumOfPasses = 0;
-
                                 } else {
+                                    players.get(i).dealCard(deal, deck);
+                                    System.out.println("Player " + players.get(i).getPlayerId() + " has dealt " + deal + ".");
+                                    System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
                                     break;
                                 }
-
-                            } else {
-                                players.get(i).dealCard(deal, deck);
-                                System.out.println("Player " + players.get(i).getPlayerId() + " has dealt " + deal + ".");
-                                System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
-                                break;
                             }
+                            
                         }
 
                         if ( !(players.get(i).invalidCard()) ) {

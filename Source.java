@@ -135,6 +135,7 @@ public class Source {
                                         }
 
                                         totalNumOfPasses = 0;
+                                        break;
 
                                     } else {
                                         break;
@@ -146,12 +147,22 @@ public class Source {
 
                             }
                         }
-
-                        if ( !(players.get(i).invalidCard()) && (totalNumOfPasses < players.size() - 1) ) {
+                    
+                        // if (i == -1) {
+                        //     System.out.println("Will you agree to break here?");
+                        //     break;
+                        // }
+                        if ( i >= 0 && !(players.get(i).invalidCard()) && (totalNumOfPasses < players.size() - 1) && !(deal.equals("Pass")) ) {
                             System.out.println("Player " + players.get(i).getPlayerId() + " has dealt " + deal + ".");
+                            System.out.println("u prin there?");
                             System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
                             continue;
+                        } else {
+                            System.out.println("Will you come here pls?");
+                            break;
                         }
+
+                        // somehow if i put else if (i==-1) under the if ( !(players.get(i)) ), it doesn't execute.
                     }
                 }
                 
@@ -234,7 +245,7 @@ public class Source {
                                 }
                             }
 
-                            if ( !(players.get(i).invalidCard()) && (totalNumOfPasses < players.size() - 1) ) {
+                            if ( !(players.get(i).invalidCard()) && (totalNumOfPasses < players.size() - 1) && !(deal.equals("Pass")) ) {
                                 System.out.println("Player " + players.get(i).getPlayerId() + " has dealt " + deal + ".");
                                 System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
                                 continue;

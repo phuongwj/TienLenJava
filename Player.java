@@ -116,9 +116,9 @@ public class Player {
     public void dealCard(String cardToBeDealt, Deck deck) {
 
         // If table is empty.
-        if (deck.getCardsPlayed().isEmpty()) {
-            deck.getCardsPlayed().add(cardToBeDealt);
-            this.getCardsInHand().remove(cardToBeDealt);
+        if (this.getCardsInHand().contains("3 of Spades")) {
+            deck.getCardsPlayed().add("3 of Spades");
+            this.getCardsInHand().remove("3 of Spades");
             this.setHasDealtCard(true);
         } else {
             // Created two temporary variables that hold the real card value from the 52 card deck of the Player's deck.
@@ -148,8 +148,8 @@ public class Player {
             }
 
             // If card dealt isn't in hand then let player deal again. 
-            if (this.getCardsInHand().contains(cardToBeDealt)) {
-                System.out.println("Do you ever go to false");
+            if ( this.getCardsInHand().contains(cardToBeDealt) || cardToBeDealt.equals("Pass") ) {
+                System.out.println("please come here, help me");
                 this.cardDealtInvalid = false;
             } else if ( !(this.getCardsInHand().contains(cardToBeDealt)) ){
                 System.out.println("Sorry, you don't have that card in your hand, please deal another one.");

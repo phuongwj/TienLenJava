@@ -111,8 +111,6 @@ public class Source {
 
                             if ( !(players.get(i).invalidCard()) ){
 
-                                players.get(i).setInvalidCard(false);
-
                                 if (deal.equals("Pass")) {
                                     totalNumOfPasses++;
                                     players.get(i).setHasDealtCard(false);
@@ -143,9 +141,8 @@ public class Source {
                                     }
 
                                 } else {
-                                    players.get(i).dealCard(deal, deck);
-                                    System.out.println("Player " + players.get(i).getPlayerId() + " has dealt " + deal + ".");
-                                    System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
+                                    // System.out.println("Player " + players.get(i).getPlayerId() + " has dealt " + deal + ".");
+                                    // System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
                                     break;
                                 }
                             }

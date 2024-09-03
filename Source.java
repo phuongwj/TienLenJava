@@ -63,6 +63,7 @@ public class Source {
                     if (players.get(i).getCardsInHand().contains("3 of Spades")) {
                         players.get(i).dealCard("3 of Spades", deck);
                         players.get(i).setHas3OfSpades(false);
+                        players.get(i).setHasDealtCard(true);
                         System.out.println("Player " + players.get(i).getPlayerId() + " has dealt 3 of Spades.");
                         System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
                         continue;
@@ -74,6 +75,7 @@ public class Source {
                     deal = in.nextLine();
 
                     if (deal.equals("Pass")) {
+
                         totalNumOfPasses++;
                         players.get(i).setHasDealtCard(false);
                         System.out.println("Player " + players.get(i).getPlayerId() + " has passed their turn.");
@@ -127,7 +129,7 @@ public class Source {
 
                                         for (int m = 0; m < players.size(); m++) {
                                             if (players.get(m).hasDealtCard()) {
-                                                System.out.println("Player " + players.get(m).getPlayerId() + " last dealt their card, so they will be first to start the next round.");
+                                                System.out.println("Player " + players.get(m).getPlayerId() + " last dealt their card, so they will be first to start the next round." + "\n");
                                                 turnManager.rotateTurns(m, players);
                                                 i = -1;
                                                 break;
@@ -148,21 +150,14 @@ public class Source {
                             }
                         }
                     
-                        // if (i == -1) {
-                        //     System.out.println("Will you agree to break here?");
-                        //     break;
-                        // }
                         if ( i >= 0 && !(players.get(i).invalidCard()) && (totalNumOfPasses < players.size() - 1) && !(deal.equals("Pass")) ) {
                             System.out.println("Player " + players.get(i).getPlayerId() + " has dealt " + deal + ".");
-                            System.out.println("u prin there?");
                             System.out.println("Cards on the table: " + deck.getCardsPlayed() + "\n");
+                            System.out.println("u go here?");
                             continue;
                         } else {
-                            System.out.println("Will you come here pls?");
                             break;
                         }
-
-                        // somehow if i put else if (i==-1) under the if ( !(players.get(i)) ), it doesn't execute.
                     }
                 }
                 
@@ -263,3 +258,8 @@ public class Source {
         }
     }
 }
+
+// backlog:
+// 1/
+// remember to add the condition where if the player is first to deal card, they must deal their card,
+// they can't pass the turn. since they're first, they must start the round.

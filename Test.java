@@ -23,16 +23,24 @@ public class Test {
         //     }
         // }
 
-        int counter = 0;
-        while (counter < 7) {
-            if (counter == 1) {
-                System.out.println("Hiiiiii");
-            } else if (counter >= 1) {
-                System.out.println("lol");
-            } else if (counter >= 3) {
-                System.out.println("yes");
+        // int counter = 0;
+        // while (counter < 7) {
+        //     if (counter == 1) {
+        //         System.out.println("Hiiiiii");
+        //     } else if (counter >= 1) {
+        //         System.out.println("lol");
+        //     } else if (counter >= 3) {
+        //         System.out.println("yes");
+        //     }
+        //     counter++;
+        // }
+
+        for (int i = 0; i < 4; i++) {
+            System.out.println("hi");
+            if (i == 3) {
+                i = 1;
+                System.out.println("hey");
             }
-            counter++;
         }
     }
 }

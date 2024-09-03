@@ -114,56 +114,61 @@ public class Player {
 
     // Method: Deal card.
     public void dealCard(String cardToBeDealt, Deck deck) {
-
+        
         // If table is empty.
-        if (this.getCardsInHand().contains("3 of Spades")) {
-            deck.getCardsPlayed().add("3 of Spades");
-            this.getCardsInHand().remove("3 of Spades");
+        if (deck.getCardsPlayed().isEmpty()) {
+            deck.getCardsPlayed().add(cardToBeDealt);
+            this.getCardsInHand().remove(cardToBeDealt);
             this.setHasDealtCard(true);
-        } else {
-            // Created two temporary variables that hold the real card value from the 52 card deck of the Player's deck.
-            int indexCardPlayed = 0;
-            int indexCardToBeDealt = 0;
+        }
+        else {
 
-            // Initialized the card played on the table.
-            String cardPlayed = "";
-
-            // If it's just one card, not a sequence
-            cardPlayed = deck.getCardsPlayed().get(0);
-
-            // Get the real index value of the card on the table.
-            for (int m = 0; m < deck.getDeckCard().length; m++) {
-                if (cardPlayed.equals(deck.getDeckCard()[m])) {
-                    indexCardPlayed = m;
-                    break;
-                }
-            }
-
-            // Get the real index value of the card to be dealt.
-            for (int l = 0; l < deck.getDeckCard().length; l++) {
-                if (cardToBeDealt.equals(deck.getDeckCard()[l])) {
-                    indexCardToBeDealt = l;
-                    break;
-                }
-            }
-
-            // If card dealt isn't in hand then let player deal again. 
-            if ( this.getCardsInHand().contains(cardToBeDealt) || cardToBeDealt.equals("Pass") ) {
-                System.out.println("please come here, help me");
+            if (cardToBeDealt.equals("Pass")) {
+                System.out.println("im passing");
                 this.cardDealtInvalid = false;
-            } else if ( !(this.getCardsInHand().contains(cardToBeDealt)) ){
-                System.out.println("Sorry, you don't have that card in your hand, please deal another one.");
-                this.cardDealtInvalid = true;
-            }
-
-            // Compare the indexes of card on the table and card to be dealt to see which one is stronger.
-            if (indexCardToBeDealt > indexCardPlayed) {
-                deck.getCardsPlayed().set(0, cardToBeDealt);
-                this.getCardsInHand().remove(cardToBeDealt);
-                this.setHasDealtCard(true);
+            } else if (this.getCardsInHand().contains(cardToBeDealt)) {
+                System.out.println("do u go here if it's a pass");
                 this.cardDealtInvalid = false;
-            } else if (indexCardToBeDealt < indexCardPlayed) {
-                System.out.println("Card in hand is smaller than card on table! Please deal another card or pass your turn." + "\n");
+
+                // Created two temporary variables that hold the real card value from the 52 card deck of the Player's deck.
+                int indexCardPlayed = 0;
+                int indexCardToBeDealt = 0;
+
+                // Initialized the card played on the table.
+                String cardPlayed = "";
+
+                // If it's just one card, not a sequence.
+                cardPlayed = deck.getCardsPlayed().get(0);
+
+                // Get the real index value of the card on the table.
+                for (int m = 0; m < deck.getDeckCard().length; m++) {
+                    if (cardPlayed.equals(deck.getDeckCard()[m])) {
+                        indexCardPlayed = m;
+                        break;
+                    }
+                }
+
+                // Get the real index value of the card to be dealt.
+                for (int l = 0; l < deck.getDeckCard().length; l++) {
+                    if (cardToBeDealt.equals(deck.getDeckCard()[l])) {
+                        indexCardToBeDealt = l;
+                        break;
+                    }
+                }
+
+                // Compares the indexes of card on the table and card to b dealt to see which one is stronger.      
+                if (indexCardToBeDealt > indexCardPlayed) {
+                    deck.getCardsPlayed().set(0, cardToBeDealt);
+                    this.getCardsInHand().remove(cardToBeDealt);
+                    this.setHasDealtCard(true);
+                    this.cardDealtInvalid = false;
+                } else {
+                    System.out.println("Card in hand is smaller than card on table! Please deal another card or pass your turn." + "\n");
+                    this.cardDealtInvalid = true;
+                }
+
+            } else {
+                System.out.println("Sorry, you don't have that card in your hand, please deal anoter card or pass your turn." + "\n");
                 this.cardDealtInvalid = true;
             }
         }
